@@ -18,9 +18,13 @@ app.add_middleware(
 )
 
 # Database Setup
-DB_FILE = "portfolio.db"
-SQLALCHEMY_DATABASE_URL = f"sqlite:///./{DB_FILE}"
-engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
+DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://postgres:Hansolo1808%2318@db.gydspeetlwfgsuuaprmz.supabase.co:5432/postgres")
+# Ensure the dialect is correct for SQLAlchemy
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
+SQLALCHEMY_DATABASE_URL = DATABASE_URL
+engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 

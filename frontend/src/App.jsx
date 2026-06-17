@@ -751,10 +751,16 @@ export default function App() {
                             const name = e.target.name.value;
                             const email = e.target.email.value;
                             const message = e.target.message.value;
-                            const targetEmail = "roisnabhan.01@gmail.com"; 
-                            const subject = `Portfolio Contact from ${name}`;
-                            const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-                            window.location.href = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                            
+                            axios.post('/api/contact', { name, email, message })
+                                .then(res => {
+                                    alert("Message sent successfully!");
+                                    e.target.reset();
+                                })
+                                .catch(err => {
+                                    console.error(err);
+                                    alert("Oops! Something went wrong. Please try again.");
+                                });
                         }}>
                             <div className="relative">
                                 <input type="text" id="name" name="name" placeholder=" " required
