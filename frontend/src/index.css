@@ -1,0 +1,225 @@
+@import "tailwindcss";
+
+@theme {
+  --color-on-surface: #e0e3e5;
+  --color-on-tertiary-fixed: #00201c;
+  --color-on-error-container: #ffdad6;
+  --color-on-background: #e0e3e5;
+  --color-inverse-on-surface: #2d3133;
+  --color-surface-container-lowest: #0b0f10;
+  --color-secondary-container: #3131c0;
+  --color-secondary: #c0c1ff;
+  --color-on-primary-container: #7c7a7a;
+  --color-secondary-fixed-dim: #c0c1ff;
+  --color-error: #ffb4ab;
+  --color-on-primary: #313030;
+  --color-surface-container: #1d2022;
+  --color-outline: #8e9192;
+  --color-primary: #c9c6c5;
+  --color-surface-tint: #c9c6c5;
+  --color-on-surface-variant: #c4c7c7;
+  --color-inverse-surface: #e0e3e5;
+  --color-on-secondary-fixed-variant: #2f2ebe;
+  --color-on-tertiary-fixed-variant: #005047;
+  --color-on-secondary: #1000a9;
+  --color-on-secondary-fixed: #07006c;
+  --color-primary-fixed-dim: #c9c6c5;
+  --color-tertiary-fixed-dim: #3cddc7;
+  --color-surface-bright: #363a3b;
+  --color-surface: #101415;
+  --color-on-primary-fixed: #1c1b1b;
+  --color-tertiary-fixed: #62fae3;
+  --color-on-secondary-container: #b0b2ff;
+  --color-primary-container: #0d0d0d;
+  --color-surface-container-highest: #323537;
+  --color-on-tertiary: #003731;
+  --color-tertiary: #3cddc7;
+  --color-surface-container-low: #191c1e;
+  --color-tertiary-container: #00100d;
+  --color-on-tertiary-container: #008a7b;
+  --color-on-primary-fixed-variant: #474646;
+  --color-surface-container-high: #272a2c;
+  --color-background: #101415;
+  --color-secondary-fixed: #e1e0ff;
+  --color-inverse-primary: #5f5e5e;
+  --color-surface-dim: #101415;
+  --color-error-container: #93000a;
+  --color-outline-variant: #444748;
+  --color-primary-fixed: #e5e2e1;
+  --color-surface-variant: #323537;
+  --color-on-error: #690005;
+
+  --spacing-gutter: 32px;
+  --spacing-overlap-md: -48px;
+  --spacing-unit: 8px;
+  --spacing-overlap-sm: -24px;
+  --spacing-margin-page: 64px;
+  --spacing-section-gap: 160px;
+
+  --font-body-lg: "Inter", sans-serif;
+  --font-body-md: "Inter", sans-serif;
+  --font-display-xl: "Epilogue", sans-serif;
+  --font-label-caps: "Space Grotesk", sans-serif;
+  --font-headline-lg: "Epilogue", sans-serif;
+  --font-headline-md: "Epilogue", sans-serif;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 28px;
+  
+  --text-body-md: 16px;
+  --text-body-md--line-height: 24px;
+
+  --text-display-xl: 80px;
+  --text-display-xl--line-height: 88px;
+  --text-display-xl--letter-spacing: -0.04em;
+  --text-display-xl--font-weight: 800;
+
+  --text-label-caps: 14px;
+  --text-label-caps--line-height: 20px;
+  --text-label-caps--letter-spacing: 0.1em;
+  --text-label-caps--font-weight: 500;
+
+  --text-headline-lg: 48px;
+  --text-headline-lg--line-height: 56px;
+  --text-headline-lg--letter-spacing: -0.02em;
+  --text-headline-lg--font-weight: 700;
+
+  --text-headline-md: 32px;
+  --text-headline-md--line-height: 40px;
+  --text-headline-md--font-weight: 600;
+}
+
+@layer utilities {
+  .glass-panel {
+    background: rgba(16, 20, 21, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+  .neon-glow {
+    box-shadow: inset 0 0 0 1px rgba(60, 221, 199, 0.3), 0 0 20px rgba(60, 221, 199, 0.1);
+  }
+  .text-neon {
+    text-shadow: 0 0 10px rgba(60, 221, 199, 0.5);
+  }
+  
+  /* Resume Page Utilities */
+  .glass-card {
+    background-color: rgba(39, 42, 44, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+  /* glass-card pseudo-elements removed to prevent truncated border lines */
+  .blob-bg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 80vh;
+    background: radial-gradient(circle, rgba(60, 221, 199, 0.05) 0%, rgba(16, 20, 21, 0) 70%);
+    filter: blur(100px);
+    z-index: -1;
+    pointer-events: none;
+  }
+  .bg-blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -1;
+    opacity: 0.15;
+    pointer-events: none;
+  }
+  .timeline-line {
+    background: linear-gradient(180deg, transparent 0%, #3cddc7 10%, #3cddc7 90%, transparent 100%);
+  }
+  
+  /* Skills Page Utilities */
+  .glow-edge {
+    border-top: 1px solid var(--color-tertiary, #3cddc7);
+    border-left: 1px solid var(--color-secondary-fixed, #e1e0ff);
+  }
+  .progress-ring__circle {
+    transition: stroke-dashoffset 0.35s;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+  }
+
+  /* Smooth Glowing Neon Pulse */
+  @keyframes neonPulse {
+    0% { border-color: rgba(60, 221, 199, 0.1); box-shadow: 0 0 15px rgba(60, 221, 199, 0.05), inset 0 0 10px rgba(60, 221, 199, 0.05); }
+    50% { border-color: rgba(60, 221, 199, 0.5); box-shadow: 0 0 25px rgba(60, 221, 199, 0.25), inset 0 0 15px rgba(60, 221, 199, 0.15); }
+    100% { border-color: rgba(60, 221, 199, 0.1); box-shadow: 0 0 15px rgba(60, 221, 199, 0.05), inset 0 0 10px rgba(60, 221, 199, 0.05); }
+  }
+
+  .dynamic-neon-frame {
+    position: relative;
+    border-radius: 16px;
+    border: 1px solid rgba(60, 221, 199, 0.1);
+    background-color: rgba(39, 42, 44, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    animation: neonPulse 5s ease-in-out infinite;
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: transform, box-shadow;
+  }
+
+  .dynamic-neon-frame:hover {
+    transform: translateY(-5px) translateZ(0);
+    border-color: rgba(60, 221, 199, 0.8);
+    box-shadow: 0 0 30px rgba(60, 221, 199, 0.4), inset 0 0 20px rgba(60, 221, 199, 0.2);
+    animation: none; /* Holds a solid glow on hover */
+  }
+
+  
+  /* Portfolio Gallery Utilities */
+  .neon-border-top-left {
+    position: relative;
+  }
+  .neon-border-top-left::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    border-top: 1px solid transparent;
+    border-left: 1px solid transparent;
+    border-image: linear-gradient(to bottom right, #e1e0ff, #3cddc7) 1;
+    pointer-events: none;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+  }
+  .hover-lift {
+    transition: transform 0.5s ease-out, box-shadow 0.5s ease-out;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: transform;
+  }
+  .hover-lift:hover {
+    transform: translateY(-8px) scale(1.02) translateZ(0);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  }
+  .hover-lift:hover .neon-border-top-left::before {
+    opacity: 1;
+  }
+
+  /* Contact Page Utilities */
+  .input-glow:focus {
+    border-color: #3cddc7;
+    box-shadow: 0 1px 0 0 #3cddc7;
+  }
+}
+
+body {
+  @apply bg-background text-on-background font-body-md overflow-x-hidden antialiased;
+}
