@@ -204,6 +204,22 @@ export default function App() {
               span: "md:col-span-6",
               aspect: "aspect-[16/9]",
               image: "/calgen.gif"
+          },
+          {
+              title: "Credit Data System",
+              category: "Data Analytics",
+              year: "2026",
+              desc: "Comprehensive credit record search, automated pre-approval calculation, and SLIK applicant validation platform.",
+              span: "md:col-span-6",
+              aspect: "aspect-[16/9]",
+              image: "/credit_lookup/img_1.jpg",
+              sliderImages: [
+                  "/credit_lookup/img_1.jpg",
+                  "/credit_lookup/img_2.jpg",
+                  "/credit_lookup/img_3.jpg",
+                  "/credit_lookup/img_4.jpg",
+                  "/credit_lookup/img_5.jpg"
+              ]
           }
       ],
       achievements: [
@@ -359,7 +375,9 @@ export default function App() {
                       className={`${proj.span} group hover-lift transition-all duration-500 ease-out cursor-pointer`}
                   >
                       <div className={`relative rounded-2xl overflow-hidden ${proj.aspect} mb-4 glass-panel bg-surface-container flex items-center justify-center dynamic-neon-frame`}>
-                          {proj.image ? (
+                          {proj.sliderImages && proj.sliderImages.length > 0 ? (
+                              <ImageSlider images={proj.sliderImages} interval={3000} />
+                          ) : proj.image ? (
                               <img src={proj.image} alt={proj.title} className={`absolute inset-0 w-full h-full ${proj.objectFit || 'object-cover'} opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 z-0`} />
                           ) : (
                               <span className="text-on-surface-variant font-label-caps tracking-widest z-10">[ IMAGE PLACEHOLDER ]</span>
