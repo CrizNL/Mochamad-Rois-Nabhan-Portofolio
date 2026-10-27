@@ -90,10 +90,10 @@ def get_portfolio_data():
                 "role": "Data Analyst (Network & Retail Funding)",
                 "duration": "Juni 2026 - Present",
                 "highlights": [
-                    "Spearheaded data analytics initiatives within the Network & Retail Funding Directorate to optimize branch performance and liquidity growth.",
-                    "Architected automated analytical dashboards and monitoring tools to track core retail deposit inflows, branch productivity, and regional funding distribution.",
-                    "Conducted in-depth customer segmentation and behavioral analysis to formulate high-impact deposit acquisition and retention strategies.",
-                    "Collaborated with cross-functional leadership under the Danantara Indonesia ecosystem to drive data-driven decision-making and operational excellence."
+                    "Evaluated risk profiles to ensure all credit card approvals strictly aligned with internal compliance and target market policies.",
+                    "Conducted end to end applicant data validation across multiple financial systems to prevent fraud.",
+                    "Analyzed applicant incomes and existing banking assets to make data driven, responsible credit limit recommendations.",
+                    "Evaluation process for diverse card products, including Co-Branded, Regular, and Virtual Credit Cards (VCC)."
                 ]
             },
             {
