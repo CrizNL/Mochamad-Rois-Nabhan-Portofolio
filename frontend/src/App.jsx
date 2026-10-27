@@ -83,7 +83,7 @@ export default function App() {
               company: "PT Bank Rakyat Indonesia Tbk (BRI) • Danantara Indonesia",
               role: "Data Analyst",
               duration: "Juni 2026 - Present",
-              idCard: "/danantara-bri-id-card.png",
+              idCard: "/danantara-bri-id-card.jpg",
               sliderImages: [
                   "/bri_nrf_activities/img_1.jpg",
                   "/bri_nrf_activities/img_2.jpg",
@@ -536,7 +536,7 @@ export default function App() {
                                         {(exp.idCard || exp.company.includes('(BRI)') || exp.company.includes('Kampus') || exp.company.includes('BRIN') || exp.company.includes('Keramik')) && (
                                             <div className="w-2/5 aspect-[3/4] shrink-0 rounded-xl overflow-hidden glass-panel bg-surface-container flex items-center justify-center dynamic-neon-frame group/img shadow-2xl relative bg-white/5">
                                                 {exp.idCard ? (
-                                                    <img src={exp.idCard} alt="ID Card" className="w-full h-full object-contain rounded-xl p-1" />
+                                                    <img src={exp.idCard} alt="ID Card" className="w-full h-full object-cover rounded-xl transition-transform duration-700 group-hover/img:scale-105" />
                                                 ) : exp.company.includes('(BRI)') ? (
                                                     <img src="/bri-id-card.jpg" alt="ID Card" className="w-full h-full object-cover rounded-xl" />
                                                 ) : exp.company.includes('BRIN') ? (
@@ -612,7 +612,7 @@ export default function App() {
                                             <div className="w-2/5 aspect-[3/4] shrink-0 rounded-xl overflow-hidden glass-panel bg-surface-container flex items-center justify-center dynamic-neon-frame group/img shadow-2xl relative bg-white/5">
                                                 <div className="absolute inset-0 bg-black/10 z-10 pointer-events-none"></div>
                                                 {exp.idCard ? (
-                                                    <img src={exp.idCard} alt="ID Card" className="w-full h-full object-contain rounded-xl p-1 transition-transform duration-700 group-hover/img:scale-105" />
+                                                    <img src={exp.idCard} alt="ID Card" className="w-full h-full object-cover rounded-xl transition-transform duration-700 group-hover/img:scale-105" />
                                                 ) : exp.company.includes('(BRI)') ? (
                                                     <img src="/bri-id-card.jpg" alt="ID Card" className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105" />
                                                 ) : exp.company.includes('BRIN') ? (
