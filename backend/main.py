@@ -85,6 +85,18 @@ def get_portfolio_data():
         ],
         "experience": [
             {
+                "company": "PT Bank Rakyat Indonesia Tbk (BRI) • Danantara Indonesia",
+                "location": "Jakarta, Indonesia",
+                "role": "Data Analyst (Network & Retail Funding)",
+                "duration": "Juni 2026 - Present",
+                "highlights": [
+                    "Spearheaded data analytics initiatives within the Network & Retail Funding Directorate to optimize branch performance and liquidity growth.",
+                    "Architected automated analytical dashboards and monitoring tools to track core retail deposit inflows, branch productivity, and regional funding distribution.",
+                    "Conducted in-depth customer segmentation and behavioral analysis to formulate high-impact deposit acquisition and retention strategies.",
+                    "Collaborated with cross-functional leadership under the Danantara Indonesia ecosystem to drive data-driven decision-making and operational excellence."
+                ]
+            },
+            {
                 "company": "PT Bank Rakyat Indonesia Tbk (BRI)",
                 "location": "Sudirman Jakarta, Indonesia",
                 "role": "Consumer Risk Management (CRM) Data Analytics Internship",

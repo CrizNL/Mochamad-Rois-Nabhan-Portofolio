@@ -80,9 +80,31 @@ export default function App() {
       },
       experience: [
           {
+              company: "PT Bank Rakyat Indonesia Tbk (BRI) • Danantara Indonesia",
+              role: "Data Analyst",
+              duration: "Juni 2026 - Present",
+              idCard: "/danantara-bri-id-card.png",
+              sliderImages: [
+                  "/bri_nrf_activities/img_1.jpg",
+                  "/bri_nrf_activities/img_2.jpg",
+                  "/bri_nrf_activities/img_3.jpg",
+                  "/bri_nrf_activities/img_4.jpg",
+                  "/bri_nrf_activities/img_5.jpg",
+                  "/bri_nrf_activities/img_6.jpg"
+              ],
+              highlights: [
+                  "Spearheaded data analytics initiatives within the Network & Retail Funding Directorate to optimize branch performance and liquidity growth.",
+                  "Architected automated analytical dashboards and monitoring tools to track core retail deposit inflows, branch productivity, and regional funding distribution.",
+                  "Conducted in-depth customer segmentation and behavioral analysis to formulate high-impact deposit acquisition and retention strategies.",
+                  "Collaborated with cross-functional leadership under the Danantara Indonesia ecosystem to drive data-driven decision-making and operational excellence."
+              ]
+          },
+          {
               company: "PT Bank Rakyat Indonesia Tbk (BRI)",
               role: "Junior Data Analyst",
               duration: "November 2025 - Mei 2026",
+              idCard: "/bri-id-card.jpg",
+              sliderImages: Array.from({length: 5}, (_, i) => `/crm_bri_activities/img_${i+1}.jpg`),
               highlights: [
                   "Engineered an interactive internal web application for scorecard management, integrating dynamic risk grading, manual override capabilities, and captive filtering to streamline the credit decision workflow.",
                   "Conducted the technical review and performance validation of the merged (NFI-FI) Credit Scorecard model, ensuring predictive robustness by evaluating the Kolmogorov-Smirnov (KS) Statistic, Population Stability Index (PSI), and Score Banding.",
@@ -94,6 +116,8 @@ export default function App() {
               company: "Balai Besar Keramik (BBSPJIKMN)",
               role: "Research Internship",
               duration: "Februari 2024 - Juni 2024",
+              idCard: "/thervek-sack.png",
+              sliderImages: Array.from({length: 10}, (_, i) => `/bbk_activities/img_${i+1}.jpg`),
               highlights: [
                   "Conducted comprehensive physical and mechanical testing of THERVEK F monolithic refractories (AGC Plibrico) according to international ASTM standards, including Bulk Density, Apparent Porosity, and Modulus of Rupture (MOR) evaluations.",
                   "Executed high-temperature thermal analyses, such as Pyrometric Cone Equivalent (PCE) and Permanent Linear Change (PLC) testing, to accurately determine the refractoriness and dimensional stability of castable materials.",
@@ -105,6 +129,8 @@ export default function App() {
               company: "Badan Riset dan Inovasi Nasional (BRIN)",
               role: "Researcher Internship",
               duration: "Januari 2023 - Juli 2023",
+              idCard: "/brin-id-card.png",
+              sliderImages: Array.from({length: 8}, (_, i) => `/brin_activities/img_${i+1}.jpg`),
               highlights: [
                   "Spearheaded the research and development of high-performance activated carbon materials specifically optimized for the efficient removal of Methylene Blue dye.",
                   "Conducted comprehensive quantitative studies on adsorption isotherms and reaction kinetics to evaluate material efficiency and maximize adsorption capacity.",
@@ -115,6 +141,8 @@ export default function App() {
               company: "Kampus Mengajar",
               role: "Tutor Junior High School",
               duration: "August 2021 - December 2021",
+              idCard: "/kampus_mengajar_plaque.jpg",
+              sliderImages: Array.from({length: 5}, (_, i) => `/kampus_mengajar_activities/img_${i+1}.jpg`),
               highlights: [
                   "Designed and delivered structured curricula in physics, mathematics, and logical reasoning for junior high school students.",
                   "Monitored and evaluated student progress, implementing targeted learning strategies to enhance comprehension.",
@@ -505,16 +533,25 @@ export default function App() {
                                 ) : (
                                     /* Even Items Image (Left side) */
                                     <div className="w-full max-w-[650px] ml-auto flex items-center gap-4 md:gap-6">
-                                        {(exp.company.includes('(BRI)') || exp.company.includes('Kampus') || exp.company.includes('BRIN') || exp.company.includes('Keramik')) && (
+                                        {(exp.idCard || exp.company.includes('(BRI)') || exp.company.includes('Kampus') || exp.company.includes('BRIN') || exp.company.includes('Keramik')) && (
                                             <div className="w-2/5 aspect-[3/4] shrink-0 rounded-xl overflow-hidden glass-panel bg-surface-container flex items-center justify-center dynamic-neon-frame group/img shadow-2xl relative bg-white/5">
-                                                {exp.company.includes('(BRI)') && <img src="/bri-id-card.jpg" alt="ID Card" className="w-full h-full object-cover rounded-xl" />}
-                                                {exp.company.includes('BRIN') && <img src="/brin-id-card.png" alt="BRIN ID Card" className="w-full h-full object-cover rounded-xl" />}
-                                                {exp.company.includes('Kampus') && <img src="/kampus_mengajar_plaque.jpg" alt="Kampus Mengajar Plaque" className="w-full h-full object-cover rounded-xl" />}
-                                                {exp.company.includes('Keramik') && <img src="/thervek-sack.png" alt="Thervek Sack" className={`w-full h-full object-cover ${isEven ? 'rounded-xl' : 'transition-transform duration-700 group-hover/img:scale-105'}`} />}
+                                                {exp.idCard ? (
+                                                    <img src={exp.idCard} alt="ID Card" className="w-full h-full object-contain rounded-xl p-1" />
+                                                ) : exp.company.includes('(BRI)') ? (
+                                                    <img src="/bri-id-card.jpg" alt="ID Card" className="w-full h-full object-cover rounded-xl" />
+                                                ) : exp.company.includes('BRIN') ? (
+                                                    <img src="/brin-id-card.png" alt="BRIN ID Card" className="w-full h-full object-cover rounded-xl" />
+                                                ) : exp.company.includes('Kampus') ? (
+                                                    <img src="/kampus_mengajar_plaque.jpg" alt="Kampus Mengajar Plaque" className="w-full h-full object-cover rounded-xl" />
+                                                ) : exp.company.includes('Keramik') ? (
+                                                    <img src="/thervek-sack.png" alt="Thervek Sack" className={`w-full h-full object-cover ${isEven ? 'rounded-xl' : 'transition-transform duration-700 group-hover/img:scale-105'}`} />
+                                                ) : null}
                                             </div>
                                         )}
                                         <div className="w-full aspect-[4/3] rounded-xl overflow-hidden glass-panel bg-surface-container-low flex items-center justify-center dynamic-neon-frame relative group/img shadow-2xl p-0">
-                                            {exp.company.includes('(BRI)') ? (
+                                            {exp.sliderImages && exp.sliderImages.length > 0 ? (
+                                                <ImageSlider images={exp.sliderImages} interval={2500} />
+                                            ) : exp.company.includes('(BRI)') ? (
                                                 <ImageSlider images={Array.from({length: 5}, (_, i) => `/crm_bri_activities/img_${i+1}.jpg`)} interval={2500} />
                                             ) : exp.company.includes('Kampus') ? (
                                                 <ImageSlider images={Array.from({length: 5}, (_, i) => `/kampus_mengajar_activities/img_${i+1}.jpg`)} interval={2500} />
@@ -555,7 +592,9 @@ export default function App() {
                                     /* Odd Items Image (Right side) */
                                     <div className="w-full max-w-[650px] mr-auto flex items-center gap-4 md:gap-6">
                                         <div className="w-full aspect-[4/3] rounded-xl overflow-hidden glass-panel bg-surface-container flex items-center justify-center dynamic-neon-frame relative group/img shadow-2xl p-0">
-                                            {exp.company.includes('(BRI)') ? (
+                                            {exp.sliderImages && exp.sliderImages.length > 0 ? (
+                                                <ImageSlider images={exp.sliderImages} interval={2500} />
+                                            ) : exp.company.includes('(BRI)') ? (
                                                 <ImageSlider images={Array.from({length: 5}, (_, i) => `/crm_bri_activities/img_${i+1}.jpg`)} interval={2500} />
                                             ) : exp.company.includes('Kampus') ? (
                                                 <ImageSlider images={Array.from({length: 5}, (_, i) => `/kampus_mengajar_activities/img_${i+1}.jpg`)} interval={2500} />
@@ -569,13 +608,20 @@ export default function App() {
                                                 </div>
                                             )}
                                         </div>
-                                        {(exp.company.includes('(BRI)') || exp.company.includes('Kampus') || exp.company.includes('BRIN') || exp.company.includes('Keramik')) && (
+                                        {(exp.idCard || exp.company.includes('(BRI)') || exp.company.includes('Kampus') || exp.company.includes('BRIN') || exp.company.includes('Keramik')) && (
                                             <div className="w-2/5 aspect-[3/4] shrink-0 rounded-xl overflow-hidden glass-panel bg-surface-container flex items-center justify-center dynamic-neon-frame group/img shadow-2xl relative bg-white/5">
                                                 <div className="absolute inset-0 bg-black/10 z-10 pointer-events-none"></div>
-                                                {exp.company.includes('(BRI)') && <img src="/bri-id-card.jpg" alt="ID Card" className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105" />}
-                                                {exp.company.includes('BRIN') && <img src="/brin-id-card.png" alt="BRIN ID Card" className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105" />}
-                                                {exp.company.includes('Kampus') && <img src="/kampus_mengajar_plaque.jpg" alt="Kampus Mengajar Plaque" className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105" />}
-                                                {exp.company.includes('Keramik') && <img src="/thervek-sack.png" alt="Thervek Sack" className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105" />}
+                                                {exp.idCard ? (
+                                                    <img src={exp.idCard} alt="ID Card" className="w-full h-full object-contain rounded-xl p-1 transition-transform duration-700 group-hover/img:scale-105" />
+                                                ) : exp.company.includes('(BRI)') ? (
+                                                    <img src="/bri-id-card.jpg" alt="ID Card" className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105" />
+                                                ) : exp.company.includes('BRIN') ? (
+                                                    <img src="/brin-id-card.png" alt="BRIN ID Card" className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105" />
+                                                ) : exp.company.includes('Kampus') ? (
+                                                    <img src="/kampus_mengajar_plaque.jpg" alt="Kampus Mengajar Plaque" className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105" />
+                                                ) : exp.company.includes('Keramik') ? (
+                                                    <img src="/thervek-sack.png" alt="Thervek Sack" className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105" />
+                                                ) : null}
                                             </div>
                                         )}
                                     </div>
