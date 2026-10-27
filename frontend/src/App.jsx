@@ -152,11 +152,27 @@ export default function App() {
       ],
       projects: [
           {
+              title: "Credit Data System",
+              category: "Data Analytics",
+              year: "2026",
+              desc: "Comprehensive credit record search, automated pre-approval calculation, and SLIK applicant validation platform.",
+              span: "md:col-span-6",
+              aspect: "aspect-[16/9]",
+              image: "/credit_lookup/img_1.jpg",
+              sliderImages: [
+                  "/credit_lookup/img_1.jpg",
+                  "/credit_lookup/img_2.jpg",
+                  "/credit_lookup/img_3.jpg",
+                  "/credit_lookup/img_4.jpg",
+                  "/credit_lookup/img_5.jpg"
+              ]
+          },
+          {
               title: "NLP Voice Scoring (Sentinel)",
               category: "AI & Machine Learning",
               year: "2026",
               desc: "Deep dive analysis and voice scoring dashboard with light glassmorphism UI.",
-              span: "md:col-span-6",
+              span: "md:col-span-6 md:col-start-1",
               aspect: "aspect-[16/9]",
               image: "/nlp-voice-scoring.gif"
           },
@@ -188,15 +204,6 @@ export default function App() {
               image: "/activated-carbon.gif"
           },
           {
-              title: "AFIF - TDCS",
-              category: "IoT",
-              year: "2021",
-              desc: "Automatic Fish Feeder and Turbidity Device Censored System.",
-              span: "md:col-span-6",
-              aspect: "aspect-[16/9]",
-              image: "/afif-tdcs.gif"
-          },
-          {
               title: "CalGen",
               category: "Software",
               year: "2022",
@@ -206,20 +213,13 @@ export default function App() {
               image: "/calgen.gif"
           },
           {
-              title: "Credit Data System",
-              category: "Data Analytics",
-              year: "2026",
-              desc: "Comprehensive credit record search, automated pre-approval calculation, and SLIK applicant validation platform.",
+              title: "AFIF - TDCS",
+              category: "IoT",
+              year: "2021",
+              desc: "Automatic Fish Feeder and Turbidity Device Censored System.",
               span: "md:col-span-6",
               aspect: "aspect-[16/9]",
-              image: "/credit_lookup/img_1.jpg",
-              sliderImages: [
-                  "/credit_lookup/img_1.jpg",
-                  "/credit_lookup/img_2.jpg",
-                  "/credit_lookup/img_3.jpg",
-                  "/credit_lookup/img_4.jpg",
-                  "/credit_lookup/img_5.jpg"
-              ]
+              image: "/afif-tdcs.gif"
           }
       ],
       achievements: [
