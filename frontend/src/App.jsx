@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
-import { Menu, ArrowRight, ArrowUp } from 'lucide-react';
+import { Menu, ArrowRight, ArrowUp, ExternalLink, X } from 'lucide-react';
 
 const ImageSlider = ({ images, interval = 3000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -37,6 +37,7 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [bnspTab, setBnspTab] = useState('front');
+  const [modalMedia, setModalMedia] = useState(null);
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -51,6 +52,14 @@ export default function App() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setModalMedia(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   useEffect(() => {
@@ -156,9 +165,9 @@ export default function App() {
               title: "Credit Data System",
               category: "Data Analytics",
               year: "2026",
-              desc: "Comprehensive credit record search, automated pre-approval calculation, and SLIK applicant validation platform.",
-              span: "md:col-span-6",
-              aspect: "aspect-[16/9]",
+              desc: "Comprehensive credit record search, automated pre-approval calculation, and SLIK applicant validation platform for enterprise credit workflow.",
+              tags: ["React", "FastAPI", "SQL", "Risk Scoring", "SLIK"],
+              badge: "Enterprise Platform",
               image: "/credit_lookup/img_1.jpg",
               sliderImages: [
                   "/credit_lookup/img_1.jpg",
@@ -172,54 +181,54 @@ export default function App() {
               title: "NLP Voice Scoring (Sentinel)",
               category: "AI & Machine Learning",
               year: "2026",
-              desc: "Deep dive analysis and voice scoring dashboard with light glassmorphism UI.",
-              span: "md:col-span-6 md:col-start-1",
-              aspect: "aspect-[16/9]",
+              desc: "Deep dive analysis and voice scoring dashboard with light glassmorphism UI for audio emotion & sentiment analysis.",
+              tags: ["Python", "NLP", "Machine Learning", "FastText", "Speech Analytics"],
+              badge: "AI Powered",
               image: "/nlp-voice-scoring.gif"
           },
           {
               title: "Merged Credit Scorecard Model",
               category: "Data Science",
               year: "2026",
-              desc: "Technical review and advanced statistical analysis for risk prediction.",
-              span: "md:col-span-6",
-              aspect: "aspect-[16/9]",
+              desc: "Technical review and advanced statistical analysis for risk prediction evaluating KS Statistic, PSI, and score banding.",
+              tags: ["Python", "Risk Modeling", "KS Stat", "PSI", "WoE / IV"],
+              badge: "Financial Modeling",
               image: "/merged-credit-scorecard.gif"
           },
           {
               title: "Scorecard Builder App",
               category: "Data Analytics",
               year: "2026",
-              desc: "Interactive builder for credit scorecards using advanced statistical metrics.",
-              span: "md:col-span-6",
-              aspect: "aspect-[16/9]",
+              desc: "Interactive web application for credit scorecard management with dynamic risk grading and manual override capabilities.",
+              tags: ["Web App", "Python", "Interactive Analytics", "Risk Decisioning"],
+              badge: "Internal Tool",
               image: "/scorecard-builder.gif"
           },
           {
               title: "Activated Carbon Dye Removal",
               category: "Material Science",
               year: "2025",
-              desc: "Research on adsorption isotherms and kinetics.",
-              span: "md:col-span-6",
-              aspect: "aspect-[16/9]",
+              desc: "Research on adsorption isotherms and reaction kinetics for Methylene Blue dye removal using high-performance activated carbon.",
+              tags: ["Material Physics", "Adsorption Kinetics", "SEM & XRD", "BRIN Research"],
+              badge: "National Research",
               image: "/activated-carbon.gif"
           },
           {
               title: "CalGen",
               category: "Software",
               year: "2022",
-              desc: "Customizable Calculating App Generator Platform.",
-              span: "md:col-span-6",
-              aspect: "aspect-[16/9]",
+              desc: "Customizable Calculating App Generator Platform designed to assist students and researchers in mathematical computing.",
+              tags: ["Software Dev", "Algorithm", "App Generator", "Python"],
+              badge: "🥈 Silver Award - MIIX 2022",
               image: "/calgen.gif"
           },
           {
               title: "AFIF - TDCS",
               category: "IoT",
               year: "2021",
-              desc: "Automatic Fish Feeder and Turbidity Device Censored System.",
-              span: "md:col-span-6",
-              aspect: "aspect-[16/9]",
+              desc: "Automatic Fish Feeder and Turbidity Device Censored System integrating sensors, automated microcontrollers, and live monitoring.",
+              tags: ["IoT Hardware", "Microcontroller", "Turbidity Sensor", "Automation"],
+              badge: "🥉 Bronze Award - IIIC 2021",
               image: "/afif-tdcs.gif"
           }
       ],
@@ -246,6 +255,64 @@ export default function App() {
 
   const categories = portfolioData ? ['All Projects', ...new Set(portfolioData.projects.map(p => p.category))] : [];
   const filteredProjects = portfolioData ? portfolioData.projects.filter(proj => activeFilter === 'All Projects' || proj.category === activeFilter) : [];
+
+  const getBentoLayout = (idx, total) => {
+    // Single item filter: Full spotlight card
+    if (total === 1) {
+      return {
+        span: 'col-span-12',
+        aspect: 'aspect-[16/10] md:aspect-[21/9]',
+        isFeatured: true
+      };
+    }
+    // 2 items: 50/50 balance
+    if (total === 2) {
+      return {
+        span: 'col-span-12 md:col-span-6',
+        aspect: 'aspect-[16/10]',
+        isFeatured: false
+      };
+    }
+    // 3 items: 1 wide spotlight (8 cols) + 2 compact cards (4 cols each)
+    if (total === 3) {
+      if (idx === 0) {
+        return {
+          span: 'col-span-12 lg:col-span-8',
+          aspect: 'aspect-[16/10] lg:aspect-[16/9]',
+          isFeatured: true
+        };
+      }
+      return {
+        span: 'col-span-12 sm:col-span-6 lg:col-span-4',
+        aspect: 'aspect-[16/10]',
+        isFeatured: false
+      };
+    }
+    // 4 items: 2x2 grid
+    if (total === 4) {
+      return {
+        span: 'col-span-12 sm:col-span-6',
+        aspect: 'aspect-[16/10]',
+        isFeatured: false
+      };
+    }
+
+    // Default 'All Projects' (7 items) - Full Responsive Bento Grid:
+    // Row 1: Item 0 (span 8) + Item 1 (span 4) = 12 cols
+    // Row 2: Item 2 (span 4) + Item 3 (span 4) + Item 4 (span 4) = 12 cols
+    // Row 3: Item 5 (span 6) + Item 6 (span 6) = 12 cols
+    const bentoConfig = [
+      { span: 'col-span-12 lg:col-span-8', aspect: 'aspect-[16/10] md:aspect-[16/9]', isFeatured: true },
+      { span: 'col-span-12 sm:col-span-6 lg:col-span-4', aspect: 'aspect-[16/10] sm:aspect-[4/3] lg:aspect-[16/10]', isFeatured: false },
+      { span: 'col-span-12 sm:col-span-6 lg:col-span-4', aspect: 'aspect-[16/10]', isFeatured: false },
+      { span: 'col-span-12 sm:col-span-6 lg:col-span-4', aspect: 'aspect-[16/10]', isFeatured: false },
+      { span: 'col-span-12 sm:col-span-6 lg:col-span-4', aspect: 'aspect-[16/10]', isFeatured: false },
+      { span: 'col-span-12 sm:col-span-6 lg:col-span-6', aspect: 'aspect-[16/10] lg:aspect-[16/9]', isFeatured: true },
+      { span: 'col-span-12 sm:col-span-6 lg:col-span-6', aspect: 'aspect-[16/10] lg:aspect-[16/9]', isFeatured: true },
+    ];
+
+    return bentoConfig[idx % bentoConfig.length] || { span: 'col-span-12 md:col-span-6', aspect: 'aspect-[16/10]', isFeatured: false };
+  };
 
   return (
     <>
@@ -367,36 +434,89 @@ export default function App() {
                   </button>
               ))}
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-x-8 gap-y-16 items-start">
-              {filteredProjects.map((proj, idx) => (
-                  <motion.article 
-                      key={idx} 
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-50px" }}
-                      transition={{ duration: 0.6, delay: idx * 0.1 }}
-                      className={`${proj.span} group hover-lift transition-all duration-500 ease-out cursor-pointer`}
-                  >
-                      <div className={`relative rounded-2xl overflow-hidden ${proj.aspect} mb-4 glass-panel bg-surface-container flex items-center justify-center dynamic-neon-frame`}>
-                          {proj.sliderImages && proj.sliderImages.length > 0 ? (
-                              <ImageSlider images={proj.sliderImages} interval={3000} />
-                          ) : proj.image ? (
-                              <img src={proj.image} alt={proj.title} className={`absolute inset-0 w-full h-full ${proj.objectFit || 'object-cover'} opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 z-0`} />
-                          ) : (
-                              <span className="text-on-surface-variant font-label-caps tracking-widest z-10">[ IMAGE PLACEHOLDER ]</span>
-                          )}
-                          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80 z-20 pointer-events-none"></div>
-                          <div className="absolute bottom-6 left-6 right-6 z-30">
-                              <div className="flex gap-2 mb-3">
-                                  <span className="bg-surface/80 backdrop-blur-md px-3 py-1 rounded-sm font-label-caps text-[12px] text-tertiary uppercase tracking-wider">{proj.category}</span>
-                                  <span className="bg-surface/80 backdrop-blur-md px-3 py-1 rounded-sm font-label-caps text-[12px] text-on-surface uppercase tracking-wider">{proj.year}</span>
+          <div className="grid grid-cols-12 gap-6 md:gap-8 items-stretch">
+              {filteredProjects.map((proj, idx) => {
+                  const bento = getBentoLayout(idx, filteredProjects.length);
+                  return (
+                      <motion.article 
+                          key={proj.title || idx} 
+                          initial={{ opacity: 0, y: 30 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true, margin: "-50px" }}
+                          transition={{ duration: 0.6, delay: idx * 0.08 }}
+                          onClick={() => setModalMedia({
+                              ...proj,
+                              type: 'project'
+                          })}
+                          className={`${bento.span} glass-card dynamic-neon-frame rounded-2xl md:rounded-3xl p-5 md:p-6 group hover-lift cursor-pointer flex flex-col justify-between transition-all duration-500 border border-white/5 hover:border-tertiary/40 bg-surface-container-low/80 backdrop-blur-xl relative overflow-hidden`}
+                      >
+                          {/* Accent Top Gradient Line */}
+                          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-tertiary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                          {/* Image Container with Dynamic Bento Aspect */}
+                          <div className={`relative rounded-xl overflow-hidden ${bento.aspect} mb-5 bg-black/40 flex items-center justify-center border border-white/5 group-hover:border-tertiary/30 transition-colors`}>
+                              {proj.sliderImages && proj.sliderImages.length > 0 ? (
+                                  <ImageSlider images={proj.sliderImages} interval={3200} />
+                              ) : proj.image ? (
+                                  <img 
+                                      src={proj.image} 
+                                      alt={proj.title} 
+                                      className={`absolute inset-0 w-full h-full ${proj.objectFit || 'object-cover'} opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 z-0`} 
+                                  />
+                              ) : (
+                                  <span className="text-on-surface-variant font-label-caps tracking-widest z-10">[ IMAGE PLACEHOLDER ]</span>
+                              )}
+                              
+                              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-70 group-hover:opacity-40 transition-opacity z-10 pointer-events-none"></div>
+
+                              {/* Corner Quick View Button */}
+                              <div className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-background/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-on-surface-variant group-hover:text-tertiary group-hover:scale-110 group-hover:border-tertiary/40 transition-all shadow-lg">
+                                  <ExternalLink className="w-4 h-4" />
+                              </div>
+
+                              {/* Floating Badges */}
+                              <div className="absolute bottom-3 left-3 right-3 z-20 flex flex-wrap items-center justify-between gap-2">
+                                  <div className="flex items-center gap-1.5">
+                                      <span className="bg-background/85 backdrop-blur-md px-2.5 py-0.5 rounded-full font-label-caps text-[11px] text-tertiary uppercase tracking-wider border border-tertiary/30 font-semibold shadow-sm">
+                                          {proj.category}
+                                      </span>
+                                      <span className="bg-background/85 backdrop-blur-md px-2.5 py-0.5 rounded-full font-label-caps text-[11px] text-on-surface-variant uppercase tracking-wider border border-white/10 shadow-sm">
+                                          {proj.year}
+                                      </span>
+                                  </div>
+                                  {proj.badge && (
+                                      <span className="bg-primary/25 backdrop-blur-md px-2.5 py-0.5 rounded-full font-label-caps text-[10px] text-primary border border-primary/30 font-bold uppercase tracking-wider shadow-sm">
+                                          {proj.badge}
+                                      </span>
+                                  )}
                               </div>
                           </div>
-                      </div>
-                      <h2 className="font-headline-lg text-[32px] font-bold text-primary group-hover:text-tertiary transition-colors">{proj.title}</h2>
-                      <p className="font-body-md text-[16px] text-on-surface-variant mt-2">{proj.desc}</p>
-                  </motion.article>
-              ))}
+
+                          {/* Text & Content Block */}
+                          <div className="flex flex-col flex-grow justify-between gap-3">
+                              <div>
+                                  <h2 className="font-headline-lg text-[20px] md:text-[24px] font-bold text-on-surface group-hover:text-primary transition-colors leading-snug">
+                                      {proj.title}
+                                  </h2>
+                                  <p className="font-body-md text-[13px] md:text-[14px] text-on-surface-variant mt-2 line-clamp-3 leading-relaxed">
+                                      {proj.desc}
+                                  </p>
+                              </div>
+
+                              {/* Tech Stack Tags */}
+                              {proj.tags && proj.tags.length > 0 && (
+                                  <div className="pt-3 border-t border-white/5 flex flex-wrap gap-1.5 mt-2">
+                                      {proj.tags.map((tag, tIdx) => (
+                                          <span key={tIdx} className="text-[11px] px-2 py-0.5 rounded-md bg-surface-container/60 border border-white/5 text-on-surface-variant font-mono">
+                                              #{tag}
+                                          </span>
+                                      ))}
+                                  </div>
+                              )}
+                          </div>
+                      </motion.article>
+                  );
+              })}
           </div>
         </section>
 
@@ -466,10 +586,22 @@ export default function App() {
                 className="mb-40 grid grid-cols-1 md:grid-cols-2 gap-8"
             >
                 {/* Certificate 1 */}
-                <div className="w-full rounded-2xl overflow-hidden glass-card p-4 md:p-6 dynamic-neon-frame relative group/img bg-surface-container-low flex flex-col gap-4">
+                <div 
+                    onClick={() => setModalMedia({
+                        title: "Juara 3 - Malaysia Invention and Innovation Expo 2022",
+                        image: "/certificate1.png",
+                        category: "Piagam Penghargaan • FPMIPA UPI",
+                        desc: "Penghargaan atas kontribusi inovasi proyek CalGen (Customizable Calculating App Generator Platform) pada ajang internasional Malaysia Invention and Innovation Expo 2022.",
+                        type: "certificate"
+                    })}
+                    className="w-full rounded-2xl overflow-hidden glass-card p-4 md:p-6 dynamic-neon-frame relative group/img bg-surface-container-low flex flex-col gap-4 cursor-zoom-in hover-lift transition-all"
+                >
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary to-tertiary"></div>
-                    <div className="w-full aspect-[1.414/1] rounded-xl overflow-hidden bg-black/20">
+                    <div className="w-full aspect-[1.414/1] rounded-xl overflow-hidden bg-black/20 relative">
                         <img src="/certificate1.png" alt="Malaysia Invention and Innovation Expo 2022" className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105" />
+                        <div className="absolute top-3 right-3 w-7 h-7 rounded-full bg-background/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant opacity-0 group-hover/img:opacity-100 transition-opacity">
+                            <ExternalLink className="w-3.5 h-3.5 text-tertiary" />
+                        </div>
                     </div>
                     <div className="flex flex-col gap-1 px-2 pb-2">
                         <h4 className="font-headline-md text-[18px] font-bold text-on-surface group-hover/img:text-primary transition-colors">Juara 3 - Malaysia Invention and Innovation Expo 2022</h4>
@@ -478,10 +610,22 @@ export default function App() {
                 </div>
 
                 {/* Certificate 2 */}
-                <div className="w-full rounded-2xl overflow-hidden glass-card p-4 md:p-6 dynamic-neon-frame relative group/img bg-surface-container-low flex flex-col gap-4">
+                <div 
+                    onClick={() => setModalMedia({
+                        title: "Juara 3 - International Invention & Innovative Competition 2021",
+                        image: "/certificate2.png",
+                        category: "Piagam Penghargaan • MNNF Network",
+                        desc: "Penghargaan Bronze Award atas kontribusi sebagai Project Leader dan Inisiator proyek AFIF-TDCS (Automatic Fish Feeder and Turbidity Device Censored System) pada ajang IIIC 2021.",
+                        type: "certificate"
+                    })}
+                    className="w-full rounded-2xl overflow-hidden glass-card p-4 md:p-6 dynamic-neon-frame relative group/img bg-surface-container-low flex flex-col gap-4 cursor-zoom-in hover-lift transition-all"
+                >
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary to-tertiary"></div>
-                    <div className="w-full aspect-[1.414/1] rounded-xl overflow-hidden bg-black/20">
+                    <div className="w-full aspect-[1.414/1] rounded-xl overflow-hidden bg-black/20 relative">
                         <img src="/certificate2.png" alt="International Invention & Innovative Competition 2021" className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105" />
+                        <div className="absolute top-3 right-3 w-7 h-7 rounded-full bg-background/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant opacity-0 group-hover/img:opacity-100 transition-opacity">
+                            <ExternalLink className="w-3.5 h-3.5 text-tertiary" />
+                        </div>
                     </div>
                     <div className="flex flex-col gap-1 px-2 pb-2">
                         <h4 className="font-headline-md text-[18px] font-bold text-on-surface group-hover/img:text-primary transition-colors">Juara 3 - International Invention &amp; Innovative Competition 2021</h4>
@@ -490,10 +634,22 @@ export default function App() {
                 </div>
 
                 {/* Certificate 3 */}
-                <div className="w-full rounded-2xl overflow-hidden glass-card p-4 md:p-6 dynamic-neon-frame relative group/img bg-surface-container-low flex flex-col gap-4">
+                <div 
+                    onClick={() => setModalMedia({
+                        title: "Presenter Seminar - Physics for a Better World",
+                        image: "/certificate3.png",
+                        category: "Sertifikat • Seminar Nasional Fisika (SinaFi XI)",
+                        desc: "Sertifikat atas partisipasi sebagai Article Presenter dalam kegiatan Seminar Nasional Fisika ke-11 (SinaFi XI) di FPMIPA Universitas Pendidikan Indonesia.",
+                        type: "certificate"
+                    })}
+                    className="w-full rounded-2xl overflow-hidden glass-card p-4 md:p-6 dynamic-neon-frame relative group/img bg-surface-container-low flex flex-col gap-4 cursor-zoom-in hover-lift transition-all"
+                >
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary to-tertiary"></div>
-                    <div className="w-full aspect-[1.414/1] rounded-xl overflow-hidden bg-black/20">
+                    <div className="w-full aspect-[1.414/1] rounded-xl overflow-hidden bg-black/20 relative">
                         <img src="/certificate3.png" alt="Seminar Nasional Fisika" className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105" />
+                        <div className="absolute top-3 right-3 w-7 h-7 rounded-full bg-background/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant opacity-0 group-hover/img:opacity-100 transition-opacity">
+                            <ExternalLink className="w-3.5 h-3.5 text-tertiary" />
+                        </div>
                     </div>
                     <div className="flex flex-col gap-1 px-2 pb-2">
                         <h4 className="font-headline-md text-[18px] font-bold text-on-surface group-hover/img:text-primary transition-colors">Presenter Seminar - Physics for a Better World: Harmonization in Research and Education</h4>
@@ -502,10 +658,22 @@ export default function App() {
                 </div>
 
                 {/* Certificate 4 */}
-                <div className="w-full rounded-2xl overflow-hidden glass-card p-4 md:p-6 dynamic-neon-frame relative group/img bg-surface-container-low flex flex-col gap-4">
+                <div 
+                    onClick={() => setModalMedia({
+                        title: "Internship Assistant - Data Analytic",
+                        image: "/certificate4.png",
+                        category: "Sertifikat Magang • PT Bank Rakyat Indonesia (Persero) Tbk",
+                        desc: "Sertifikat resmi Program Pemagangan Lulusan Perguruan Tinggi Kemnaker di PT Bank Rakyat Indonesia (Persero) Tbk posisi Internship Assistant - Data Analytic dengan predikat Sangat Baik.",
+                        type: "certificate"
+                    })}
+                    className="w-full rounded-2xl overflow-hidden glass-card p-4 md:p-6 dynamic-neon-frame relative group/img bg-surface-container-low flex flex-col gap-4 cursor-zoom-in hover-lift transition-all"
+                >
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary to-tertiary"></div>
-                    <div className="w-full aspect-[1.414/1] rounded-xl overflow-hidden bg-black/20">
+                    <div className="w-full aspect-[1.414/1] rounded-xl overflow-hidden bg-black/20 relative">
                         <img src="/certificate4.png" alt="BRI Internship" className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105" />
+                        <div className="absolute top-3 right-3 w-7 h-7 rounded-full bg-background/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant opacity-0 group-hover/img:opacity-100 transition-opacity">
+                            <ExternalLink className="w-3.5 h-3.5 text-tertiary" />
+                        </div>
                     </div>
                     <div className="flex flex-col gap-1 px-2 pb-2">
                         <h4 className="font-headline-md text-[18px] font-bold text-on-surface group-hover/img:text-primary transition-colors">Internship Assistant - Data Analytic</h4>
@@ -528,19 +696,28 @@ export default function App() {
                                 className="absolute inset-0 w-full h-full object-cover blur-xl opacity-25 scale-125 pointer-events-none" 
                             />
                             {/* Main Certificate image */}
-                            <a 
-                                href={bnspTab === 'back' ? '/bnsp-certificate-page2.png' : bnspTab === 'all' ? '/bnsp-certificate-combined.png' : '/bnsp-certificate-page1.png'} 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                title="Klik untuk memperbesar gambar sertifikat"
-                                className="relative z-10 w-full h-full flex items-center justify-center cursor-zoom-in"
+                            <div 
+                                onClick={() => setModalMedia({
+                                    title: "Asisten Pengembang Web (Assistant Web Developer)",
+                                    image: bnspTab === 'back' ? '/bnsp-certificate-page2.png' : bnspTab === 'all' ? '/bnsp-certificate-combined.png' : '/bnsp-certificate-page1.png',
+                                    category: "Sertifikat Kompetensi • BNSP RI & LSP BBPVP Bekasi",
+                                    desc: "Sertifikasi Kompetensi Resmi Badan Nasional Sertifikasi Profesi (BNSP) No. Registrasi 2513.J62.3.2.1957.00143.2.0721 Bidang Software Development, berlaku 3 tahun (2026 - 2029) mencakup 6 unit kompetensi SKKNI.",
+                                    tags: ["BNSP", "SKKNI", "Web Developer", "Software Development", "LSP BBPVP Bekasi"],
+                                    pdf: "/bnsp-sertifikat-web-developer.pdf",
+                                    type: "certificate"
+                                })}
+                                title="Klik untuk memperbesar sertifikat"
+                                className="relative z-10 w-full h-full flex items-center justify-center cursor-zoom-in group/img"
                             >
                                 <img 
                                     src={bnspTab === 'back' ? '/bnsp-certificate-page2.png' : bnspTab === 'all' ? '/bnsp-certificate-combined.png' : '/bnsp-certificate-page1.png'} 
                                     alt="Sertifikat BNSP Web Developer - Mochamad Rois Nabhan" 
                                     className={`max-h-full max-w-full ${bnspTab === 'all' ? 'object-cover w-full h-full' : 'object-contain'} rounded-lg shadow-2xl transition-transform duration-500 hover:scale-[1.03]`} 
                                 />
-                            </a>
+                                <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-background/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant opacity-0 group-hover/img:opacity-100 transition-opacity">
+                                    <ExternalLink className="w-3.5 h-3.5 text-tertiary" />
+                                </div>
+                            </div>
                         </div>
                         
                         {/* Page Switcher Tabs */}
@@ -990,6 +1167,10 @@ export default function App() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-12 max-w-7xl mx-auto">
           <span className="text-zinc-50 font-black font-display-xl text-2xl tracking-tighter uppercase">RN PORTFOLIO</span>
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
+            <a className="flex items-center gap-2 font-label-caps text-[12px] font-bold tracking-[0.2em] uppercase text-zinc-600 hover:text-white transition-colors duration-300" href="https://github.com/CrizNL" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
             <a className="flex items-center gap-2 font-label-caps text-[12px] font-bold tracking-[0.2em] uppercase text-zinc-600 hover:text-[#0A66C2] transition-colors duration-300" href="https://www.linkedin.com/in/mchronn/" target="_blank" rel="noopener noreferrer">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
               LinkedIn
@@ -1017,6 +1198,114 @@ export default function App() {
           >
             <ArrowUp size={24} className="group-hover:-translate-y-1 transition-transform" />
           </motion.button>
+        )}
+      </AnimatePresence>
+
+      {/* Fullscreen Bento Lightbox Modal */}
+      <AnimatePresence>
+        {modalMedia && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setModalMedia(null)}
+            className="fixed inset-0 z-[200] bg-black/85 backdrop-blur-xl flex items-center justify-center p-4 md:p-8"
+          >
+            <motion.div 
+              initial={{ scale: 0.92, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.92, opacity: 0, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-surface-container-low border border-white/10 rounded-2xl md:rounded-3xl overflow-hidden max-w-5xl w-full max-h-[92vh] flex flex-col shadow-[0_0_60px_rgba(45,156,219,0.25)] dynamic-neon-frame relative"
+            >
+              {/* Modal Top Header */}
+              <div className="flex items-center justify-between p-4 md:p-6 border-b border-white/10 bg-surface-container/60">
+                <div className="flex flex-col gap-1 pr-4">
+                  <div className="flex items-center gap-2">
+                    <span className="text-tertiary font-label-caps text-[11px] uppercase tracking-wider font-semibold">
+                      {modalMedia.category} {modalMedia.year ? `• ${modalMedia.year}` : ''}
+                    </span>
+                    {modalMedia.badge && (
+                      <span className="bg-primary/20 text-primary border border-primary/30 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                        {modalMedia.badge}
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="font-headline-md text-[18px] md:text-[22px] font-bold text-on-surface">
+                    {modalMedia.title}
+                  </h3>
+                </div>
+                <button 
+                  type="button" 
+                  onClick={() => setModalMedia(null)}
+                  aria-label="Tutup preview"
+                  className="w-10 h-10 rounded-full bg-surface-container hover:bg-surface-container-high border border-white/10 flex items-center justify-center text-on-surface-variant hover:text-white transition-all shrink-0 cursor-pointer shadow-md"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Modal Media Body */}
+              <div className="p-4 md:p-6 overflow-y-auto flex flex-col gap-5 items-center bg-black/40">
+                <div className="w-full flex items-center justify-center rounded-xl overflow-hidden max-h-[60vh] bg-black/50 border border-white/5 relative">
+                  {modalMedia.sliderImages && modalMedia.sliderImages.length > 0 ? (
+                    <div className="w-full aspect-[16/10] max-h-[60vh]">
+                      <ImageSlider images={modalMedia.sliderImages} interval={3500} />
+                    </div>
+                  ) : (
+                    <img 
+                      src={modalMedia.image} 
+                      alt={modalMedia.title} 
+                      className="max-h-[60vh] w-auto max-w-full object-contain rounded-lg shadow-2xl" 
+                    />
+                  )}
+                </div>
+
+                {/* Modal Description & Actions */}
+                <div className="w-full flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-3 border-t border-white/10">
+                  <div className="flex flex-col gap-2 max-w-2xl">
+                    {modalMedia.desc && (
+                      <p className="text-[13px] md:text-[14px] text-on-surface-variant leading-relaxed">
+                        {modalMedia.desc}
+                      </p>
+                    )}
+                    {modalMedia.tags && modalMedia.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        {modalMedia.tags.map((t, i) => (
+                          <span key={i} className="text-[11px] px-2.5 py-0.5 rounded-full bg-surface-container border border-white/5 text-primary font-mono">
+                            #{t}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="flex items-center gap-3 shrink-0">
+                    {modalMedia.pdf ? (
+                      <a 
+                        href={modalMedia.pdf} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 rounded-xl bg-gradient-to-r from-primary to-secondary text-background font-bold text-[13px] hover:shadow-[0_0_20px_rgba(45,156,219,0.5)] transition-all flex items-center gap-1.5"
+                      >
+                        Buka Dokumen PDF
+                      </a>
+                    ) : modalMedia.image ? (
+                      <a 
+                        href={modalMedia.image} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 rounded-xl bg-surface-container hover:bg-surface-container-high border border-white/10 text-on-surface font-semibold text-[13px] transition-all flex items-center gap-1.5"
+                      >
+                        Buka Resolusi Penuh <ExternalLink className="w-3.5 h-3.5 text-tertiary" />
+                      </a>
+                    ) : null}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
         )}
       </AnimatePresence>
         </div>
