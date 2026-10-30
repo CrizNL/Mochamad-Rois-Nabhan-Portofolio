@@ -36,6 +36,7 @@ export default function App() {
   const [activeFilter, setActiveFilter] = useState('All Projects');
   const [isLoading, setIsLoading] = useState(true);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [bnspTab, setBnspTab] = useState('front');
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -227,9 +228,11 @@ export default function App() {
           { title: "International Invention and Innovative Competition 2021", role: "Bronze Award", date: "June 2021", desc: "Contributed as a Project Leader and Initiator of a project named \"AFIF - TDCS\" (Automatic Fish Feeder and Turbidity Device Censored System)" },
           { title: "Lecturer and Laborant Assistant - Basic Physics Laboratory", role: "Lab Assistant", date: "July 2021", desc: "Assisted Lecturer and laborant preparing their asynchronous learning video for junior scholar" },
           { title: "Malaysia Invention and Inovation Expo 2022", role: "Silver Award", date: "April 2022", desc: "Contributed as a part Initiator and project scriptwriter of a project named \"CalGen\" (Customizable Calculating App Generator Platform)" },
-          { title: "FPMIPA Awards & HMF Appreciation 2022", role: "Awardee", date: "January 2023", desc: "Received awards for Senior Innovator that have been completed in international events" }
+          { title: "FPMIPA Awards & HMF Appreciation 2022", role: "Awardee", date: "January 2023", desc: "Received awards for Senior Innovator that have been completed in international events" },
+          { title: "Sertifikasi Kompetensi Asisten Pengembang Web", role: "Certified Competent", date: "Juli 2026", desc: "Certified by Badan Nasional Sertifikasi Profesi (BNSP) & LSP BBPVP Bekasi on 6 core software development competency units." }
       ],
       development: [
+          { title: "Sertifikasi Asisten Pengembang Web (Web Developer) | BNSP", date: "Juli 2026 - Juli 2029" },
           { title: "Seminar Nasional Fisika – XI (Article Presenter)", date: "16 Agustus 2025" },
           { title: "Quality Assurance Course | Binar Academy", date: "February - April 2023" },
           { title: "Google Data Analytics | Kemkominfo Digitalents Scholarship", date: "September - November 2022" },
@@ -507,6 +510,127 @@ export default function App() {
                     <div className="flex flex-col gap-1 px-2 pb-2">
                         <h4 className="font-headline-md text-[18px] font-bold text-on-surface group-hover/img:text-primary transition-colors">Internship Assistant - Data Analytic</h4>
                         <p className="font-body-sm text-[14px] text-tertiary uppercase tracking-wider font-semibold">Sertifikat Magang • PT Bank Rakyat Indonesia (Persero) Tbk</p>
+                    </div>
+                </div>
+
+                {/* Certificate 5: Highlight Sertifikat BNSP Web Developer */}
+                <div className="md:col-span-2 w-full rounded-2xl overflow-hidden glass-card p-5 md:p-7 dynamic-neon-frame relative group/img bg-surface-container-low flex flex-col lg:flex-row gap-6 md:gap-8 items-center border border-primary/20 shadow-[0_0_25px_rgba(45,156,219,0.08)]">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-tertiary"></div>
+                    
+                    {/* Left: Certificate Preview Frame */}
+                    <div className="w-full lg:w-5/12 flex flex-col gap-3 shrink-0">
+                        <div className="w-full aspect-[1.414/1] rounded-xl overflow-hidden bg-black/40 relative flex items-center justify-center p-2.5 border border-white/5">
+                            {/* Ambient background blur */}
+                            <img 
+                                src={bnspTab === 'back' ? '/bnsp-certificate-page2.png' : bnspTab === 'all' ? '/bnsp-certificate-combined.png' : '/bnsp-certificate-page1.png'} 
+                                alt="" 
+                                aria-hidden="true"
+                                className="absolute inset-0 w-full h-full object-cover blur-xl opacity-25 scale-125 pointer-events-none" 
+                            />
+                            {/* Main Certificate image */}
+                            <a 
+                                href={bnspTab === 'back' ? '/bnsp-certificate-page2.png' : bnspTab === 'all' ? '/bnsp-certificate-combined.png' : '/bnsp-certificate-page1.png'} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                title="Klik untuk memperbesar gambar sertifikat"
+                                className="relative z-10 w-full h-full flex items-center justify-center cursor-zoom-in"
+                            >
+                                <img 
+                                    src={bnspTab === 'back' ? '/bnsp-certificate-page2.png' : bnspTab === 'all' ? '/bnsp-certificate-combined.png' : '/bnsp-certificate-page1.png'} 
+                                    alt="Sertifikat BNSP Web Developer - Mochamad Rois Nabhan" 
+                                    className={`max-h-full max-w-full ${bnspTab === 'all' ? 'object-cover w-full h-full' : 'object-contain'} rounded-lg shadow-2xl transition-transform duration-500 hover:scale-[1.03]`} 
+                                />
+                            </a>
+                        </div>
+                        
+                        {/* Page Switcher Tabs */}
+                        <div className="flex items-center justify-center gap-1.5 p-1 rounded-xl bg-surface-container/60 border border-white/5 text-[11px] font-semibold">
+                            <button 
+                                type="button" 
+                                onClick={() => setBnspTab('front')} 
+                                className={`px-3 py-1 rounded-lg transition-all ${bnspTab === 'front' ? 'bg-primary text-background font-bold shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}`}
+                            >
+                                Sertifikat Utama
+                            </button>
+                            <button 
+                                type="button" 
+                                onClick={() => setBnspTab('back')} 
+                                className={`px-3 py-1 rounded-lg transition-all ${bnspTab === 'back' ? 'bg-primary text-background font-bold shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}`}
+                            >
+                                Unit Kompetensi
+                            </button>
+                            <button 
+                                type="button" 
+                                onClick={() => setBnspTab('all')} 
+                                className={`px-3 py-1 rounded-lg transition-all ${bnspTab === 'all' ? 'bg-primary text-background font-bold shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}`}
+                            >
+                                Lengkap (2 Hal)
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Right: Certificate Details */}
+                    <div className="w-full lg:w-7/12 flex flex-col gap-3.5">
+                        <div className="flex flex-wrap items-center gap-2">
+                            <span className="px-3 py-0.5 rounded-full bg-primary/20 text-primary border border-primary/30 text-[11px] font-bold uppercase tracking-wider">
+                                🎖️ Highlight Sertifikasi Nasional BNSP
+                            </span>
+                            <span className="px-3 py-0.5 rounded-full bg-tertiary/10 text-tertiary border border-tertiary/20 text-[11px] font-semibold tracking-wider">
+                                2026 - 2029 (Berlaku 3 Tahun)
+                            </span>
+                        </div>
+
+                        <div>
+                            <h3 className="font-headline-md text-[20px] md:text-[24px] font-bold text-on-surface group-hover/img:text-primary transition-colors leading-snug">
+                                Asisten Pengembang Web (Assistant Web Developer)
+                            </h3>
+                            <p className="font-body-sm text-[13px] md:text-[14px] text-tertiary uppercase tracking-wider font-semibold mt-1">
+                                Sertifikat Kompetensi • Badan Nasional Sertifikasi Profesi (BNSP) &amp; BBPVP Bekasi
+                            </p>
+                            <p className="text-[12px] text-on-surface-variant font-mono mt-1">
+                                No. Registrasi: <span className="text-secondary font-semibold">2513.J62.3.2.1957.00143.2.0721</span> • Bidang Software Development
+                            </p>
+                        </div>
+
+                        {/* Verified Competencies */}
+                        <div className="pt-2 border-t border-white/10">
+                            <p className="text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold mb-2">
+                                6 Unit Kompetensi Terverifikasi (SKKNI):
+                            </p>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                                {[
+                                    "Mengimplementasikan UI",
+                                    "Eksekusi Bahasa Pemrograman",
+                                    "Pengorganisasian File & Modul Rapi",
+                                    "Guidelines & Best Practices",
+                                    "Pemrograman Terstruktur",
+                                    "Library & Komponen Pre-Existing"
+                                ].map((unit, idx) => (
+                                    <div key={idx} className="text-[11px] px-2.5 py-1 rounded bg-surface-container/70 border border-white/5 text-on-surface/90 flex items-center gap-1.5">
+                                        <span className="text-tertiary text-xs shrink-0">✦</span>
+                                        <span className="truncate">{unit}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Actions */}
+                        <div className="pt-2 flex flex-wrap items-center gap-3">
+                            <a 
+                                href="/bnsp-sertifikat-web-developer.pdf" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-primary to-secondary text-background font-bold text-[13px] hover:shadow-[0_0_15px_rgba(45,156,219,0.4)] transition-all transform hover:-translate-y-0.5"
+                            >
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                Buka Dokumen Asli (PDF)
+                            </a>
+                            <span className="text-[11px] text-on-surface-variant">
+                                Terakreditasi Standar Kompetensi Kerja Nasional (SKKNI)
+                            </span>
+                        </div>
                     </div>
                 </div>
             </motion.div>
