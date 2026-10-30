@@ -351,8 +351,8 @@ export default function App() {
 
       {/* TopNavBar */}
       <nav className="fixed top-0 w-full z-50 bg-zinc-950/40 backdrop-blur-xl border-b border-white/10 shadow-2xl transition-all cubic-bezier(0.4, 0, 0.2, 1)">
-        <div className="flex justify-between items-center px-8 py-5 max-w-7xl mx-auto">
-          <div className="text-2xl font-black tracking-tighter text-white font-display-xl uppercase">PORTFOLIO</div>
+        <div className="flex justify-between items-center px-4 sm:px-6 md:px-8 py-4 sm:py-5 max-w-7xl mx-auto">
+          <div className="text-xl sm:text-2xl font-black tracking-tighter text-white font-display-xl uppercase">PORTFOLIO</div>
           <ul className="hidden md:flex gap-8 items-center font-label-caps uppercase text-sm tracking-wide">
             <li><a className="text-zinc-400 hover:text-white transition-colors duration-300 font-semibold hover:scale-105 hover:text-tertiary" href="#home">Home</a></li>
             <li><a className="text-zinc-400 hover:text-white transition-colors duration-300 font-semibold hover:scale-105 hover:text-tertiary" href="#portfolio">Portfolio</a></li>
@@ -361,15 +361,15 @@ export default function App() {
             <li><a className="text-zinc-400 hover:text-white transition-colors duration-300 font-semibold hover:scale-105 hover:text-tertiary" href="#contact">Contact</a></li>
           </ul>
           <a className="hidden md:inline-block font-label-caps uppercase bg-secondary-container text-white px-6 py-2 rounded-full font-bold hover:scale-105 transition-transform duration-300" href="#contact">Let's Connect</a>
-          <button className="md:hidden text-on-surface">
+          <button className="md:hidden text-on-surface p-1">
             <Menu size={24} />
           </button>
         </div>
       </nav>
 
-      <main className="pt-[100px]">
+      <main className="pt-[80px] sm:pt-[100px]">
         {/* Hero Section */}
-        <section id="home" className="min-h-screen flex items-center relative px-8 mt-16 mb-12">
+        <section id="home" className="min-h-screen flex items-center relative px-4 sm:px-6 md:px-8 mt-8 sm:mt-16 mb-12">
           <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-8 relative z-10 items-center">
             <motion.div 
               initial={{ opacity: 0, y: 50 }}
@@ -378,19 +378,19 @@ export default function App() {
               className="col-span-1 md:col-span-8 md:pr-12 relative z-20"
             >
               <div className="inline-block px-4 py-1 mb-6 rounded-full bg-surface-container-high border border-outline-variant">
-                <span className="font-label-caps text-[14px] text-tertiary tracking-widest uppercase">{portfolioData.profile.title}</span>
+                <span className="font-label-caps text-[12px] sm:text-[14px] text-tertiary tracking-widest uppercase">{portfolioData.profile.title}</span>
               </div>
-              <h1 className="font-display-xl text-[60px] md:text-[80px] font-extrabold text-on-surface leading-[1.1] mb-8">
+              <h1 className="font-display-xl text-[36px] sm:text-[54px] md:text-[80px] font-extrabold text-on-surface leading-[1.1] mb-6 sm:mb-8">
                 HI, I'M <br/>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-tertiary italic font-black uppercase py-2 pr-4">{portfolioData.profile.name}</span><br/>
                 DATA <span className="font-light italic text-on-surface-variant">DRIVEN</span>.
               </h1>
-              <p className="font-body-lg text-[18px] text-on-surface-variant max-w-xl mb-10">
+              <p className="font-body-lg text-[15px] sm:text-[18px] text-on-surface-variant max-w-xl mb-8 sm:mb-10 leading-relaxed">
                 {portfolioData.profile.description}
               </p>
-              <div className="flex gap-6 items-center">
-                <a className="bg-secondary-container text-white px-8 py-4 rounded-full font-label-caps text-[14px] uppercase tracking-wider hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_rgba(49,49,192,0.4)]" href="#portfolio">View Work</a>
-                <a className="glass-panel text-on-surface px-8 py-4 rounded-full font-label-caps text-[14px] uppercase tracking-wider border-tertiary border hover:scale-105 transition-transform duration-300 flex items-center gap-2" href="#contact">
+              <div className="flex flex-wrap gap-4 sm:gap-6 items-center">
+                <a className="bg-secondary-container text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-label-caps text-[13px] sm:text-[14px] uppercase tracking-wider hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_rgba(49,49,192,0.4)]" href="#portfolio">View Work</a>
+                <a className="glass-panel text-on-surface px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-label-caps text-[13px] sm:text-[14px] uppercase tracking-wider border-tertiary border hover:scale-105 transition-transform duration-300 flex items-center gap-2" href="#contact">
                   Our Approach <ArrowRight size={18} />
                 </a>
               </div>
@@ -400,24 +400,24 @@ export default function App() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="col-span-1 md:col-span-4 relative mt-12 md:mt-0 z-10 md:-ml-12"
+              className="col-span-1 md:col-span-4 relative mt-8 md:mt-0 z-10 md:-ml-12"
             >
               <div className="relative w-full aspect-[3/4] rounded-[24px] overflow-hidden glass-panel bg-surface-container-highest flex items-center justify-center dynamic-neon-frame">
                 <img src="/nabhan-batik.png" alt="Hero Portrait" className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300" />
               </div>
-              <div className="absolute -bottom-8 -left-8 glass-panel p-6 rounded-[16px] backdrop-blur-xl border border-white/10 shadow-2xl z-30">
-                <div className="font-display-xl text-[40px] font-black leading-none text-tertiary">S.Si</div>
-                <div className="font-label-caps text-[14px] text-on-surface-variant uppercase mt-1">Material Physics</div>
+              <div className="absolute -bottom-4 -left-2 sm:-bottom-8 sm:-left-8 glass-panel p-4 sm:p-6 rounded-[16px] backdrop-blur-xl border border-white/10 shadow-2xl z-30">
+                <div className="font-display-xl text-[30px] sm:text-[40px] font-black leading-none text-tertiary">S.Si</div>
+                <div className="font-label-caps text-[12px] sm:text-[14px] text-on-surface-variant uppercase mt-1">Material Physics</div>
               </div>
             </motion.div>
           </div>
         </section>
 
         {/* Portfolio Gallery Section */}
-        <section id="portfolio" className="max-w-7xl mx-auto px-8 relative z-10 pt-32 pb-16">
+        <section id="portfolio" className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 pt-20 md:pt-32 pb-16">
           <header className="mb-12">
-              <h1 className="font-display-xl text-[48px] md:text-[60px] text-primary mb-2 font-bold uppercase">Selected Works</h1>
-              <p className="font-body-lg text-[18px] text-on-surface-variant max-w-2xl">Exploring the intersection of physics and data science. A collection of experimental research and data models.</p>
+              <h1 className="font-display-xl text-[34px] sm:text-[48px] md:text-[60px] text-primary mb-2 font-bold uppercase leading-tight">Selected Works</h1>
+              <p className="font-body-lg text-[15px] sm:text-[18px] text-on-surface-variant max-w-2xl">Exploring the intersection of physics and data science. A collection of experimental research and data models.</p>
           </header>
           <div className="mb-12 flex flex-wrap gap-4 items-center">
               {categories.map(category => (
@@ -521,44 +521,74 @@ export default function App() {
         </section>
 
         {/* Experience Section */}
-        <section id="experience" className="pt-16 pb-16 max-w-7xl mx-auto px-8 relative">
-            <header className="mb-24">
-                <h1 className="font-display-xl text-[48px] md:text-[60px] font-bold text-on-surface mb-2 uppercase">Experience & Education.</h1>
-                <p className="font-body-lg text-[18px] text-on-surface-variant max-w-2xl">A history of building high-quality results in research, data analytics, and technological innovation.</p>
+        <section id="experience" className="pt-16 pb-16 max-w-7xl mx-auto px-4 sm:px-6 md:px-8 relative">
+            <header className="mb-16 md:mb-24">
+                <h1 className="font-display-xl text-[32px] sm:text-[42px] md:text-[60px] font-bold text-on-surface mb-2 uppercase leading-tight">Experience &amp; Education.</h1>
+                <p className="font-body-lg text-[15px] md:text-[18px] text-on-surface-variant max-w-2xl">A history of building high-quality results in research, data analytics, and technological innovation.</p>
             </header>
             
-            {/* Education Block */}
+            {/* Education Block - Responsive Bento Grid for all devices */}
             <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6 }}
-                className="mb-40 glass-card dynamic-neon-frame rounded-2xl p-8 md:p-12 relative overflow-hidden group"
+                className="mb-12 md:mb-16 glass-card dynamic-neon-frame rounded-2xl md:rounded-3xl p-5 sm:p-8 md:p-12 relative overflow-hidden group bg-surface-container-low/90 backdrop-blur-xl border border-white/5 shadow-2xl"
             >
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary to-tertiary"></div>
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary via-tertiary to-primary"></div>
+                
+                {/* Header with Institution & Year Badge */}
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
                     <div>
-                        <h2 className="font-display-xl text-[32px] md:text-[40px] font-bold text-on-surface mb-4 tracking-tight">EDUCATION</h2>
-                        <h3 className="font-headline-md text-[20px] md:text-[24px] text-primary leading-snug">{portfolioData.education.institution} <br className="md:hidden" /><span className="text-on-surface-variant font-body-md text-[16px] md:text-[18px]">— {portfolioData.education.location} | {portfolioData.education.type}</span></h3>
+                        <div className="flex items-center gap-2 mb-2">
+                            <span className="text-tertiary text-sm">🎓</span>
+                            <h2 className="font-display-xl text-[26px] sm:text-[32px] md:text-[40px] font-bold text-on-surface tracking-tight">EDUCATION</h2>
+                        </div>
+                        <h3 className="font-headline-md text-[18px] sm:text-[20px] md:text-[24px] text-primary leading-snug font-semibold">
+                            {portfolioData.education.institution}
+                            <span className="text-on-surface-variant font-body-md text-[14px] sm:text-[16px] md:text-[18px] block sm:inline sm:ml-2">
+                                — {portfolioData.education.location} | {portfolioData.education.type}
+                            </span>
+                        </h3>
                     </div>
-                    <div className="bg-surface-container px-6 py-2 rounded-full font-label-caps text-tertiary tracking-widest text-[14px] shrink-0 border border-tertiary/20">
+                    <div className="bg-surface-container px-4 sm:px-6 py-1.5 sm:py-2 rounded-full font-label-caps text-tertiary tracking-widest text-[12px] sm:text-[14px] shrink-0 border border-tertiary/20 font-bold shadow-sm">
                         {portfolioData.education.year}
                     </div>
                 </div>
                 
-                <div className="grid grid-cols-1 xl:grid-cols-12 gap-12">
-                    <div className="xl:col-span-7 space-y-4">
-                        <p className="font-body-lg text-[18px] text-on-surface">
-                            <strong className="text-secondary">{portfolioData.education.degree}</strong>; Cumulative GPA: <span className="text-on-surface-variant">{portfolioData.education.gpa}</span>
-                        </p>
-                        <p className="font-body-lg text-[18px] text-on-surface">
-                            Proficiency Test of English to Speakers of Other Languages, (PTESOL) Score: <span className="text-tertiary font-bold">{portfolioData.education.ptesol}</span>
-                        </p>
-                        <div className="pt-6 mt-6 border-t border-white/10">
-                            <ul className="space-y-3">
+                {/* Bento Grid: Left Credentials Tile + Right Two Portrait Graduation Tiles */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-stretch">
+                    {/* Left Bento: Academic Details */}
+                    <div className="lg:col-span-7 flex flex-col justify-between space-y-5 bg-surface-container/40 rounded-2xl p-5 sm:p-7 border border-white/5">
+                        <div className="space-y-3">
+                            <div className="flex flex-wrap items-baseline gap-2">
+                                <span className="font-body-lg text-[16px] sm:text-[18px] font-bold text-secondary leading-snug">
+                                    {portfolioData.education.degree}
+                                </span>
+                            </div>
+                            
+                            {/* Key Stats Pills */}
+                            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-1">
+                                <div className="px-3.5 py-1.5 rounded-xl bg-surface-container border border-white/10 flex items-center gap-2 shadow-sm">
+                                    <span className="text-on-surface-variant text-xs uppercase tracking-wider font-semibold">Cumulative GPA:</span>
+                                    <span className="text-tertiary font-bold text-sm sm:text-base">{portfolioData.education.gpa}</span>
+                                </div>
+                                <div className="px-3.5 py-1.5 rounded-xl bg-surface-container border border-white/10 flex items-center gap-2 shadow-sm">
+                                    <span className="text-on-surface-variant text-xs uppercase tracking-wider font-semibold">PTESOL Score:</span>
+                                    <span className="text-tertiary font-bold text-sm sm:text-base">{portfolioData.education.ptesol}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Honors & Awards */}
+                        <div className="pt-4 border-t border-white/10">
+                            <p className="text-[12px] uppercase tracking-wider text-on-surface-variant font-semibold mb-3 flex items-center gap-1.5">
+                                <span className="text-tertiary">🏆</span> Honors &amp; Awards:
+                            </p>
+                            <ul className="space-y-2.5">
                                 {portfolioData.education.awards.map((award, i) => (
-                                    <li key={i} className="flex items-start text-on-surface-variant font-body-md text-[16px]">
-                                        <span className="text-tertiary mr-3 mt-1">✦</span>
+                                    <li key={i} className="flex items-start text-on-surface-variant font-body-md text-[13px] sm:text-[15px] leading-relaxed">
+                                        <span className="text-tertiary mr-2.5 mt-0.5 shrink-0 text-xs">✦</span>
                                         <span>{award}</span>
                                     </li>
                                 ))}
@@ -566,12 +596,52 @@ export default function App() {
                         </div>
                     </div>
                     
-                    <div className="xl:col-span-5 flex flex-col sm:flex-row gap-6">
-                        <div className="w-full aspect-video sm:aspect-square md:aspect-video xl:aspect-auto xl:h-full rounded-xl overflow-hidden glass-panel bg-surface-container flex items-center justify-center dynamic-neon-frame group/img">
-                            <img src="/track_record_image.jpg" alt="Track Record" className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-110" />
+                    {/* Right Bento: 2 Portrait Graduation Photos Side-by-Side (Bento Layout for ALL Devices) */}
+                    <div className="lg:col-span-5 grid grid-cols-2 gap-3 sm:gap-5 items-stretch">
+                        {/* Graduation Photo 1 */}
+                        <div 
+                            onClick={() => setModalMedia({
+                                title: "Academic Convocation Ceremony - UPI",
+                                image: "/track_record_image.jpg",
+                                category: "Graduation Milestones",
+                                desc: "Prosesi Wisuda Sarjana Fisika (S.Si) Universitas Pendidikan Indonesia bersama map kelulusan.",
+                                type: "education"
+                            })}
+                            className="w-full aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto lg:h-full rounded-xl sm:rounded-2xl overflow-hidden glass-panel bg-surface-container flex items-center justify-center dynamic-neon-frame group/img relative cursor-zoom-in border border-white/5 shadow-xl hover-lift"
+                        >
+                            <img 
+                                src="/track_record_image.jpg" 
+                                alt="Track Record & Graduation" 
+                                className="w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover/img:scale-105" 
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity flex items-end p-2 sm:p-3">
+                                <span className="text-[10px] sm:text-[11px] font-label-caps text-on-surface uppercase tracking-wider font-semibold flex items-center gap-1">
+                                    <ExternalLink className="w-3 h-3 text-tertiary" /> Perbesar
+                                </span>
+                            </div>
                         </div>
-                        <div className="w-full aspect-video sm:aspect-square md:aspect-video xl:aspect-auto xl:h-full rounded-xl overflow-hidden glass-panel bg-surface-container flex items-center justify-center dynamic-neon-frame group/img">
-                            <img src="/college_image.jpg" alt="College Graduation" className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-110" />
+
+                        {/* Graduation Photo 2 */}
+                        <div 
+                            onClick={() => setModalMedia({
+                                title: "Bachelor of Science (S.Si) Portrait",
+                                image: "/college_image.jpg",
+                                category: "Academic Graduation",
+                                desc: "Potret resmi kelulusan Sarjana Sains Fisika dengan toga akademik dan selempang kehormatan.",
+                                type: "education"
+                            })}
+                            className="w-full aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto lg:h-full rounded-xl sm:rounded-2xl overflow-hidden glass-panel bg-surface-container flex items-center justify-center dynamic-neon-frame group/img relative cursor-zoom-in border border-white/5 shadow-xl hover-lift"
+                        >
+                            <img 
+                                src="/college_image.jpg" 
+                                alt="College Graduation Portrait" 
+                                className="w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover/img:scale-105" 
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity flex items-end p-2 sm:p-3">
+                                <span className="text-[10px] sm:text-[11px] font-label-caps text-on-surface uppercase tracking-wider font-semibold flex items-center gap-1">
+                                    <ExternalLink className="w-3 h-3 text-tertiary" /> Perbesar
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -583,7 +653,7 @@ export default function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6 }}
-                className="mb-40 grid grid-cols-1 md:grid-cols-2 gap-8"
+                className="mb-14 md:mb-20 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
             >
                 {/* Certificate 1 */}
                 <div 
@@ -682,12 +752,12 @@ export default function App() {
                 </div>
 
                 {/* Certificate 5: Highlight Sertifikat BNSP Web Developer */}
-                <div className="md:col-span-2 w-full rounded-2xl overflow-hidden glass-card p-5 md:p-7 dynamic-neon-frame relative group/img bg-surface-container-low flex flex-col lg:flex-row gap-6 md:gap-8 items-center border border-primary/20 shadow-[0_0_25px_rgba(45,156,219,0.08)]">
+                <div className="md:col-span-2 w-full rounded-2xl md:rounded-3xl overflow-hidden glass-card p-4 sm:p-6 md:p-8 dynamic-neon-frame relative group/img bg-surface-container-low flex flex-col lg:flex-row gap-6 md:gap-8 items-center border border-primary/20 shadow-[0_0_25px_rgba(45,156,219,0.08)]">
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-tertiary"></div>
                     
                     {/* Left: Certificate Preview Frame */}
                     <div className="w-full lg:w-5/12 flex flex-col gap-3 shrink-0">
-                        <div className="w-full aspect-[1.414/1] rounded-xl overflow-hidden bg-black/40 relative flex items-center justify-center p-2.5 border border-white/5">
+                        <div className={`w-full ${bnspTab === 'all' ? 'aspect-[1.414/1]' : 'aspect-[1/1.3] sm:aspect-[1/1.414]'} rounded-xl overflow-hidden bg-black/40 relative flex items-center justify-center p-2.5 border border-white/5 transition-all`}>
                             {/* Ambient background blur */}
                             <img 
                                 src={bnspTab === 'back' ? '/bnsp-certificate-page2.png' : bnspTab === 'all' ? '/bnsp-certificate-combined.png' : '/bnsp-certificate-page1.png'} 
@@ -721,25 +791,25 @@ export default function App() {
                         </div>
                         
                         {/* Page Switcher Tabs */}
-                        <div className="flex items-center justify-center gap-1.5 p-1 rounded-xl bg-surface-container/60 border border-white/5 text-[11px] font-semibold">
+                        <div className="flex flex-wrap items-center justify-center gap-1.5 p-1 rounded-xl bg-surface-container/60 border border-white/5 text-[11px] font-semibold">
                             <button 
                                 type="button" 
                                 onClick={() => setBnspTab('front')} 
-                                className={`px-3 py-1 rounded-lg transition-all ${bnspTab === 'front' ? 'bg-primary text-background font-bold shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}`}
+                                className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${bnspTab === 'front' ? 'bg-primary text-background font-bold shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}`}
                             >
                                 Sertifikat Utama
                             </button>
                             <button 
                                 type="button" 
                                 onClick={() => setBnspTab('back')} 
-                                className={`px-3 py-1 rounded-lg transition-all ${bnspTab === 'back' ? 'bg-primary text-background font-bold shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}`}
+                                className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${bnspTab === 'back' ? 'bg-primary text-background font-bold shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}`}
                             >
                                 Unit Kompetensi
                             </button>
                             <button 
                                 type="button" 
                                 onClick={() => setBnspTab('all')} 
-                                className={`px-3 py-1 rounded-lg transition-all ${bnspTab === 'all' ? 'bg-primary text-background font-bold shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}`}
+                                className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${bnspTab === 'all' ? 'bg-primary text-background font-bold shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}`}
                             >
                                 Lengkap (2 Hal)
                             </button>
@@ -758,13 +828,13 @@ export default function App() {
                         </div>
 
                         <div>
-                            <h3 className="font-headline-md text-[20px] md:text-[24px] font-bold text-on-surface group-hover/img:text-primary transition-colors leading-snug">
+                            <h3 className="font-headline-md text-[18px] sm:text-[22px] md:text-[24px] font-bold text-on-surface group-hover/img:text-primary transition-colors leading-snug">
                                 Asisten Pengembang Web (Assistant Web Developer)
                             </h3>
                             <p className="font-body-sm text-[13px] md:text-[14px] text-tertiary uppercase tracking-wider font-semibold mt-1">
                                 Sertifikat Kompetensi • Badan Nasional Sertifikasi Profesi (BNSP) &amp; BBPVP Bekasi
                             </p>
-                            <p className="text-[12px] text-on-surface-variant font-mono mt-1">
+                            <p className="text-[12px] text-on-surface-variant font-mono mt-1 break-words">
                                 No. Registrasi: <span className="text-secondary font-semibold">2513.J62.3.2.1957.00143.2.0721</span> • Bidang Software Development
                             </p>
                         </div>
@@ -783,9 +853,9 @@ export default function App() {
                                     "Pemrograman Terstruktur",
                                     "Library & Komponen Pre-Existing"
                                 ].map((unit, idx) => (
-                                    <div key={idx} className="text-[11px] px-2.5 py-1 rounded bg-surface-container/70 border border-white/5 text-on-surface/90 flex items-center gap-1.5">
+                                    <div key={idx} className="text-[11px] px-2.5 py-1.5 rounded-lg bg-surface-container/70 border border-white/5 text-on-surface/90 flex items-center gap-1.5">
                                         <span className="text-tertiary text-xs shrink-0">✦</span>
-                                        <span className="truncate">{unit}</span>
+                                        <span className="leading-snug">{unit}</span>
                                     </div>
                                 ))}
                             </div>
@@ -953,12 +1023,12 @@ export default function App() {
         </section>
 
         {/* Self Development & Achievements Section */}
-        <section id="achievements" className="pt-16 pb-16 px-8 max-w-7xl mx-auto relative z-10">
-            <header className="mb-32">
-                <h1 className="font-display-xl text-[48px] md:text-[60px] font-bold text-on-surface mb-8 max-w-4xl uppercase">
+        <section id="achievements" className="pt-16 pb-16 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto relative z-10">
+            <header className="mb-14 md:mb-20">
+                <h1 className="font-display-xl text-[32px] sm:text-[44px] md:text-[60px] font-bold text-on-surface mb-6 md:mb-8 max-w-4xl uppercase leading-tight">
                     Self Development &amp; <span className="text-tertiary italic">Achievements</span>
                 </h1>
-                <p className="font-body-lg text-[18px] text-on-surface-variant max-w-2xl">
+                <p className="font-body-lg text-[15px] sm:text-[18px] text-on-surface-variant max-w-2xl leading-relaxed">
                     A comprehensive track record of my professional growth, academic excellence, and technical certifications.
                 </p>
             </header>
@@ -968,11 +1038,11 @@ export default function App() {
                 {/* Headers */}
                 <div className="flex items-center gap-4 mb-4">
                     <span className="text-tertiary font-bold text-3xl">🏆</span>
-                    <h2 className="font-headline-lg text-[32px] text-on-surface uppercase tracking-wider">Achievements</h2>
+                    <h2 className="font-headline-lg text-[26px] sm:text-[32px] text-on-surface uppercase tracking-wider">Achievements</h2>
                 </div>
                 <div className="flex items-center gap-4 mb-4">
                     <span className="text-secondary font-bold text-3xl">🚀</span>
-                    <h2 className="font-headline-lg text-[32px] text-on-surface uppercase tracking-wider">Self Development</h2>
+                    <h2 className="font-headline-lg text-[26px] sm:text-[32px] text-on-surface uppercase tracking-wider">Self Development</h2>
                 </div>
 
                 {/* Symmetrical Rows */}
@@ -989,14 +1059,14 @@ export default function App() {
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true, margin: "-50px" }}
                                     transition={{ duration: 0.6, delay: idx * 0.1 }}
-                                    className="glass-card dynamic-neon-frame hover-lift cursor-pointer rounded-xl p-8 flex flex-col gap-4 group"
+                                    className="glass-card dynamic-neon-frame hover-lift cursor-pointer rounded-xl p-5 sm:p-7 md:p-8 flex flex-col gap-4 group"
                                 >
                                     <div className="flex flex-col xl:flex-row xl:items-start justify-between gap-4">
-                                        <h3 className="font-headline-md text-[20px] font-bold text-primary group-hover:text-tertiary transition-colors">{achievement.title}</h3>
+                                        <h3 className="font-headline-md text-[18px] sm:text-[20px] font-bold text-primary group-hover:text-tertiary transition-colors">{achievement.title}</h3>
                                         <span className="font-label-caps text-[12px] bg-surface-container px-3 py-1 rounded text-tertiary shrink-0 mt-1">{achievement.date}</span>
                                     </div>
-                                    <div className="font-label-caps text-[14px] text-on-surface uppercase">{achievement.role}</div>
-                                    {achievement.desc && <p className="font-body-md text-[16px] text-on-surface-variant leading-relaxed mt-auto">{achievement.desc}</p>}
+                                    <div className="font-label-caps text-[13px] sm:text-[14px] text-on-surface uppercase">{achievement.role}</div>
+                                    {achievement.desc && <p className="font-body-md text-[14px] sm:text-[16px] text-on-surface-variant leading-relaxed mt-auto">{achievement.desc}</p>}
                                 </motion.div>
                             ) : <div></div>}
 
@@ -1007,10 +1077,10 @@ export default function App() {
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true, margin: "-50px" }}
                                     transition={{ duration: 0.6, delay: idx * 0.1 }}
-                                    className="glass-card dynamic-neon-frame hover-lift cursor-pointer rounded-xl p-8 flex flex-col gap-4 group"
+                                    className="glass-card dynamic-neon-frame hover-lift cursor-pointer rounded-xl p-5 sm:p-7 md:p-8 flex flex-col gap-4 group"
                                 >
                                     <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4">
-                                        <h3 className="font-headline-md text-[20px] font-bold text-primary group-hover:text-secondary transition-colors">{dev.title}</h3>
+                                        <h3 className="font-headline-md text-[18px] sm:text-[20px] font-bold text-primary group-hover:text-secondary transition-colors">{dev.title}</h3>
                                         <span className="font-label-caps text-[12px] bg-surface-container px-3 py-1 rounded text-secondary shrink-0">{dev.date}</span>
                                     </div>
                                 </motion.div>
@@ -1021,12 +1091,12 @@ export default function App() {
             </div>
 
             {/* Mobile Layout (Stacked Columns) */}
-            <div className="grid lg:hidden grid-cols-1 gap-16 mb-16">
+            <div className="grid lg:hidden grid-cols-1 gap-12 sm:gap-16 mb-16">
                 {/* Left Column: Achievements */}
-                <div className="flex flex-col gap-8">
-                    <div className="flex items-center gap-4 mb-4">
-                        <span className="text-tertiary font-bold text-3xl">🏆</span>
-                        <h2 className="font-headline-lg text-[32px] text-on-surface uppercase tracking-wider">Achievements</h2>
+                <div className="flex flex-col gap-6 sm:gap-8">
+                    <div className="flex items-center gap-3 sm:gap-4 mb-2">
+                        <span className="text-tertiary font-bold text-2xl sm:text-3xl">🏆</span>
+                        <h2 className="font-headline-lg text-[24px] sm:text-[32px] text-on-surface uppercase tracking-wider">Achievements</h2>
                     </div>
                     {portfolioData.achievements.map((item, idx) => (
                         <motion.div 
@@ -1035,23 +1105,23 @@ export default function App() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.6, delay: idx * 0.1 }}
-                            className="glass-card dynamic-neon-frame hover-lift cursor-pointer rounded-xl p-8 flex flex-col gap-4 group"
+                            className="glass-card dynamic-neon-frame hover-lift cursor-pointer rounded-xl p-5 sm:p-7 md:p-8 flex flex-col gap-4 group"
                         >
                             <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
-                                <h3 className="font-headline-md text-[20px] font-bold text-primary group-hover:text-tertiary transition-colors">{item.title}</h3>
+                                <h3 className="font-headline-md text-[18px] sm:text-[20px] font-bold text-primary group-hover:text-tertiary transition-colors leading-snug">{item.title}</h3>
                                 <span className="font-label-caps text-[12px] bg-surface-container px-3 py-1 rounded text-tertiary shrink-0 mt-1">{item.date}</span>
                             </div>
-                            <div className="font-label-caps text-[14px] text-on-surface uppercase">{item.role}</div>
-                            {item.desc && <p className="font-body-md text-[16px] text-on-surface-variant leading-relaxed">{item.desc}</p>}
+                            <div className="font-label-caps text-[13px] sm:text-[14px] text-on-surface uppercase">{item.role}</div>
+                            {item.desc && <p className="font-body-md text-[14px] sm:text-[16px] text-on-surface-variant leading-relaxed">{item.desc}</p>}
                         </motion.div>
                     ))}
                 </div>
 
                 {/* Right Column: Self Development */}
-                <div className="flex flex-col gap-8">
-                    <div className="flex items-center gap-4 mb-4">
-                        <span className="text-secondary font-bold text-3xl">🚀</span>
-                        <h2 className="font-headline-lg text-[32px] text-on-surface uppercase tracking-wider">Self Development</h2>
+                <div className="flex flex-col gap-6 sm:gap-8">
+                    <div className="flex items-center gap-3 sm:gap-4 mb-2">
+                        <span className="text-secondary font-bold text-2xl sm:text-3xl">🚀</span>
+                        <h2 className="font-headline-lg text-[24px] sm:text-[32px] text-on-surface uppercase tracking-wider">Self Development</h2>
                     </div>
                     {portfolioData.development.map((item, idx) => (
                         <motion.div 
@@ -1060,10 +1130,10 @@ export default function App() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.6, delay: idx * 0.1 }}
-                            className="glass-card dynamic-neon-frame hover-lift cursor-pointer rounded-xl p-8 flex flex-col gap-4 group"
+                            className="glass-card dynamic-neon-frame hover-lift cursor-pointer rounded-xl p-5 sm:p-7 md:p-8 flex flex-col gap-4 group"
                         >
                             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                                <h3 className="font-headline-md text-[20px] font-bold text-primary group-hover:text-secondary transition-colors">{item.title}</h3>
+                                <h3 className="font-headline-md text-[18px] sm:text-[20px] font-bold text-primary group-hover:text-secondary transition-colors leading-snug">{item.title}</h3>
                                 <span className="font-label-caps text-[12px] bg-surface-container px-3 py-1 rounded text-secondary shrink-0">{item.date}</span>
                             </div>
                         </motion.div>
@@ -1073,7 +1143,7 @@ export default function App() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="pt-32 pb-40 px-8 relative z-10 w-full max-w-7xl mx-auto">
+        <section id="contact" className="pt-20 md:pt-32 pb-24 md:pb-32 px-4 sm:px-6 md:px-8 relative z-10 w-full max-w-7xl mx-auto">
             {/* Deep Background Blur for Contact */}
             <div className="fixed inset-0 pointer-events-none z-0 hidden lg:block">
                 <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#07006c] rounded-full mix-blend-screen filter blur-[120px] opacity-20"></div>
@@ -1083,18 +1153,18 @@ export default function App() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
                 {/* Left Column: Headline & Info */}
                 <div className="lg:col-span-5 flex flex-col gap-4">
-                    <span className="font-label-caps text-[14px] text-tertiary bg-surface-container-high px-4 py-2 rounded-full inline-block w-max mb-4 uppercase">Contact</span>
-                    <h1 className="font-display-xl text-[60px] font-bold text-on-surface mb-8 leading-tight">Let's Work<br/>Together</h1>
-                    <p className="font-body-lg text-[18px] text-on-surface-variant mb-12 max-w-md">
+                    <span className="font-label-caps text-[12px] sm:text-[14px] text-tertiary bg-surface-container-high px-4 py-2 rounded-full inline-block w-max mb-4 uppercase">Contact</span>
+                    <h1 className="font-display-xl text-[36px] sm:text-[48px] md:text-[60px] font-bold text-on-surface mb-6 md:mb-8 leading-tight">Let's Work<br/>Together</h1>
+                    <p className="font-body-lg text-[15px] sm:text-[18px] text-on-surface-variant mb-8 sm:mb-12 max-w-md leading-relaxed">
                         Looking to start a new project or just want to say hi? Send me a message and I'll get back to you as soon as possible.
                     </p>
                     
                     {/* Location / Map Glass Card */}
-                    <a href="https://maps.app.goo.gl/JboCVxf6oDzdKERb6" target="_blank" rel="noopener noreferrer" className="glass-card dynamic-neon-frame group cursor-pointer rounded-xl p-6 relative overflow-hidden h-[200px] flex flex-col justify-end block">
+                    <a href="https://maps.app.goo.gl/JboCVxf6oDzdKERb6" target="_blank" rel="noopener noreferrer" className="glass-card dynamic-neon-frame group cursor-pointer rounded-xl p-5 sm:p-6 relative overflow-hidden h-[180px] sm:h-[200px] flex flex-col justify-end block">
                         <div className="absolute inset-0 bg-surface-container flex items-center justify-center overflow-hidden">
                            <img src="/south_jakarta_map.png" alt="South Jakarta Map" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
-                                <span className="bg-primary text-on-primary px-4 py-2 rounded-full font-label-large flex items-center gap-2">
+                                <span className="bg-primary text-on-primary px-4 py-2 rounded-full font-label-large flex items-center gap-2 text-xs sm:text-sm">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path fillRule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" /></svg>
                                     Open in Maps
                                 </span>
@@ -1103,14 +1173,14 @@ export default function App() {
                         <div className="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent opacity-80 z-10 pointer-events-none"></div>
                         <div className="relative z-20 flex items-center gap-3 pointer-events-none">
                             <span className="text-tertiary text-xl">📍</span>
-                            <span className="font-body-md text-[16px] text-on-surface font-semibold">{portfolioData.profile.location}</span>
+                            <span className="font-body-md text-[15px] sm:text-[16px] text-on-surface font-semibold">{portfolioData.profile.location}</span>
                         </div>
                     </a>
                 </div>
                 
                 {/* Right Column: Form */}
                 <div className="lg:col-span-6 lg:col-start-7 lg:mt-12">
-                    <div className="glass-card dynamic-neon-frame rounded-[24px] p-8 md:p-12">
+                    <div className="glass-card dynamic-neon-frame rounded-[24px] p-5 sm:p-8 md:p-12">
                         <form className="flex flex-col gap-8" onSubmit={(e) => { 
                             e.preventDefault(); 
                             const name = e.target.name.value;
@@ -1163,7 +1233,7 @@ export default function App() {
 
       </main>
 
-      <footer className="w-full py-20 px-8 bg-zinc-950 border-t border-white/5 relative z-10 transition-all ease-in-out duration-300">
+      <footer className="w-full py-14 md:py-20 px-4 sm:px-6 md:px-8 bg-zinc-950 border-t border-white/5 relative z-10 transition-all ease-in-out duration-300">
         <div className="flex flex-col md:flex-row justify-between items-center gap-12 max-w-7xl mx-auto">
           <span className="text-zinc-50 font-black font-display-xl text-2xl tracking-tighter uppercase">RN PORTFOLIO</span>
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
