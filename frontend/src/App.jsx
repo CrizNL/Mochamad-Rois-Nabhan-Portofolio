@@ -185,7 +185,7 @@ export default function App() {
       profile: {
           name: "Mochamad Rois Nabhan",
           title: "Material Physics & Data Science",
-          description: "Data Analyst and Machine Learning enthusiast with a solid background in Material Physics and advanced scientific research. I'd thrive at the intersection of mathematical theory and practical software engineering. Proven ability to architect end-to-end data pipelines, develop sophisticated predictive algorithms, and deploy analytical solutions that solve real-world problems. Committed to continuous learning, I'd leverage my deep analytical mindset to transform complex datasets into clear, data-driven decisions that propel business growth and technological advancement.",
+          description: "Data Analyst and Machine Learning practitioner with a background in Material Physics and scientific research. I work at the intersection of mathematical theory and practical software engineering, building reliable data pipelines, predictive models, and intuitive analytical tools that solve real world challenges. With strong analytical thinking and curiosity, I focus on turning complex datasets into clear insights that drive impactful decisions.",
           location: "South Jakarta, DKI Jakarta"
       },
       education: {
@@ -219,7 +219,7 @@ export default function App() {
                   "Evaluated risk profiles to ensure all credit card approvals strictly aligned with internal compliance and target market policies.",
                   "Conducted end to end applicant data validation across multiple financial systems to prevent fraud.",
                   "Analyzed applicant incomes and existing banking assets to make data driven, responsible credit limit recommendations.",
-                  "Evaluation process for diverse card products, including Co-Branded, Regular, and Virtual Credit Cards (VCC)."
+                  "Evaluation process for diverse card products, including Co Branded, Regular, and Virtual Credit Cards (VCC)."
               ]
           },
           {
@@ -230,8 +230,8 @@ export default function App() {
               sliderImages: Array.from({length: 5}, (_, i) => `/crm_bri_activities/img_${i+1}.jpg`),
               highlights: [
                   "Engineered an interactive internal web application for scorecard management, integrating dynamic risk grading, manual override capabilities, and captive filtering to streamline the credit decision workflow.",
-                  "Conducted the technical review and performance validation of the merged (NFI-FI) Credit Scorecard model, ensuring predictive robustness by evaluating the Kolmogorov-Smirnov (KS) Statistic, Population Stability Index (PSI), and Score Banding.",
-                  "Supported the end-to-end development lifecycle of Application, Behavior, and Collection (A/B/C) scorecards, optimizing the institution's automated credit risk assessment parameters.",
+                  "Conducted technical review and performance validation of the merged NFI and FI Credit Scorecard model, evaluating Kolmogorov Smirnov (KS) Statistic, Population Stability Index (PSI), and Score Banding.",
+                  "Supported the end to end development lifecycle of Application, Behavior, and Collection (A/B/C) scorecards, optimizing automated credit risk assessment parameters.",
                   "Executed rigorous data preprocessing and feature engineering, utilizing Information Value (IV) and Weight of Evidence (WoE) binning to strengthen Probability of Default (PD) prediction models."
               ]
           },
@@ -243,9 +243,9 @@ export default function App() {
               sliderImages: Array.from({length: 10}, (_, i) => `/bbk_activities/img_${i+1}.jpg`),
               highlights: [
                   "Conducted comprehensive physical and mechanical testing of THERVEK F monolithic refractories (AGC Plibrico) according to international ASTM standards, including Bulk Density, Apparent Porosity, and Modulus of Rupture (MOR) evaluations.",
-                  "Executed high-temperature thermal analyses, such as Pyrometric Cone Equivalent (PCE) and Permanent Linear Change (PLC) testing, to accurately determine the refractoriness and dimensional stability of castable materials.",
+                  "Executed high temperature thermal analyses, such as Pyrometric Cone Equivalent (PCE) and Permanent Linear Change (PLC) testing, to accurately determine the refractoriness and dimensional stability of castable materials.",
                   "Performed rigorous Abrasion Resistance (ASTM C 704) and Thermal Shock (ASTM C 1171) tests to evaluate the material's durability and structural integrity under extreme operating conditions.",
-                  "Processed and analyzed complex experimental data to generate detailed quality control reports, ensuring the refractory materials met stringent industrial requirements for high-temperature applications."
+                  "Processed and analyzed complex experimental data to generate detailed quality control reports, ensuring the refractory materials met stringent industrial requirements for high temperature applications."
               ]
           },
           {
@@ -255,9 +255,9 @@ export default function App() {
               idCard: "/brin-id-card.png",
               sliderImages: Array.from({length: 8}, (_, i) => `/brin_activities/img_${i+1}.jpg`),
               highlights: [
-                  "Spearheaded the research and development of high-performance activated carbon materials specifically optimized for the efficient removal of Methylene Blue dye.",
+                  "Spearheaded the research and development of high performance activated carbon materials specifically optimized for the efficient removal of Methylene Blue dye.",
                   "Conducted comprehensive quantitative studies on adsorption isotherms and reaction kinetics to evaluate material efficiency and maximize adsorption capacity.",
-                  "Performed advanced structural and morphological characterization of synthesized materials utilizing Scanning Electron Microscopy (SEM) and X-Ray Diffraction (XRD)."
+                  "Performed advanced structural and morphological characterization of synthesized materials utilizing Scanning Electron Microscopy (SEM) and X Ray Diffraction (XRD)."
               ]
           },
           {
@@ -278,7 +278,7 @@ export default function App() {
               title: "Credit Data System",
               category: "Data Analytics",
               year: "2026",
-              desc: "Comprehensive credit record search, automated pre-approval calculation, and SLIK applicant validation platform for enterprise credit workflow.",
+              desc: "Comprehensive credit record lookup, automated credit eligibility calculations, and SLIK applicant validation platform for enterprise lending workflows.",
               tags: ["React", "FastAPI", "SQL", "Risk Scoring", "SLIK"],
               badge: "Enterprise Platform",
               image: "/credit_lookup/img_1.jpg",
@@ -294,8 +294,8 @@ export default function App() {
               title: "Dhira Foundation Financial Apps",
               category: "Financial Operations",
               year: "2026",
-              desc: "End-to-end financial operations and enterprise management platform engineered for Yayasan Dhira. Features real-time cashflow analytics (inflow/outflow tracking & 30-day dynamic trend charts), multi-tier expense approval workflows, automated doctor & staff honorarium invoicing, digital attendance logging, patient therapy tracking, and Cloudflare Turnstile-secured Role-Based Access Control (RBAC).\n\nKey Capabilities:\n✦ Financial Management & Cashflow: Dual-metric 30-day cashflow visualization, real-time balance calculations, audit-ready Buku Kas ledger, and automated financial report export.\n✦ Multi-Tier Expense Approval: Structured requisition pipeline across healthcare, operational, and facility budgets with status tracking (Menunggu, Disetujui, Ditolak).\n✦ Medical & Staff Invoicing: Comprehensive billing cycle management for specialist doctors, accountants, and foundation stakeholders with multi-stage payment tracking.\n✦ Operational HR & Healthcare: Daily staff attendance logs, non-medical logbook monitoring, and web-integrated patient consultation intake system.\n✦ Enterprise Security & Collaboration: Multi-role authentication (Admin, Staff, Inspector, Dokter, Stakeholder) protected by Cloudflare Turnstile, complemented by real-time internal team notes.",
-              tags: ["Full-Stack Web", "Financial Analytics", "Cashflow ERP", "Approval Workflow", "Cloudflare Security"],
+              desc: "Comprehensive financial operations and enterprise management platform built for Yayasan Dhira. Features live cashflow analytics tracking income and expense trends across 30 days, tiered approval workflows for operational spending, automated honorarium billing for doctors and staff, digital attendance logging, patient therapy monitoring, and role based access control protected by Cloudflare Turnstile.\n\nKey Capabilities:\n✦ Financial Management and Cashflow: 30 day cashflow trends, live balance calculations, audit ready Buku Kas ledger, and automated financial report export.\n✦ Tiered Expense Approval: Structured requisition pipeline across healthcare, operational, and facility budgets with clear status tracking (Menunggu, Disetujui, Ditolak).\n✦ Medical and Staff Invoicing: Full billing cycle management for specialist doctors, accountants, and foundation stakeholders with milestone payment tracking.\n✦ Operational HR and Healthcare: Daily staff attendance logs, operational logbook monitoring, and an integrated patient consultation intake system.\n✦ Security and Collaboration: Multirole authentication (Admin, Staff, Inspector, Dokter, Stakeholder) protected by Cloudflare Turnstile, complemented by shared internal team notes.",
+              tags: ["Full Stack Web", "Financial Analytics", "Cashflow ERP", "Approval Workflow", "Cloudflare Security"],
               badge: "Enterprise Platform",
               image: "/dhira/dashboard.png",
               sliderImages: [
@@ -315,7 +315,7 @@ export default function App() {
               title: "NLP Voice Scoring (Sentinel)",
               category: "AI & Machine Learning",
               year: "2026",
-              desc: "Deep dive analysis and voice scoring dashboard with light glassmorphism UI for audio emotion & sentiment analysis.",
+              desc: "Voice scoring dashboard and deep dive analysis interface with light glassmorphism UI for audio emotion and sentiment analysis.",
               tags: ["Python", "NLP", "Machine Learning", "FastText", "Speech Analytics"],
               badge: "AI Powered",
               image: "/nlp-voice-scoring.gif"
@@ -324,7 +324,7 @@ export default function App() {
               title: "Merged Credit Scorecard Model",
               category: "Data Science",
               year: "2026",
-              desc: "Technical review and advanced statistical analysis for risk prediction evaluating KS Statistic, PSI, and score banding.",
+              desc: "Statistical analysis and risk modeling for credit risk prediction, evaluating KS Statistic, PSI, and score banding.",
               tags: ["Python", "Risk Modeling", "KS Stat", "PSI", "WoE / IV"],
               badge: "Financial Modeling",
               image: "/merged-credit-scorecard.gif"
@@ -342,7 +342,7 @@ export default function App() {
               title: "Activated Carbon Dye Removal",
               category: "Material Science",
               year: "2025",
-              desc: "Research on adsorption isotherms and reaction kinetics for Methylene Blue dye removal using high-performance activated carbon.",
+              desc: "Research on adsorption isotherms and reaction kinetics for Methylene Blue dye removal using high performance activated carbon.",
               tags: ["Material Physics", "Adsorption Kinetics", "SEM & XRD", "BRIN Research"],
               badge: "National Research",
               image: "/activated-carbon.gif"
@@ -353,7 +353,7 @@ export default function App() {
               year: "2022",
               desc: "Customizable Calculating App Generator Platform designed to assist students and researchers in mathematical computing.",
               tags: ["Software Dev", "Algorithm", "App Generator", "Python"],
-              badge: "🥈 Silver Award - MIIX 2022",
+              badge: "🥈 Silver Award • MIIX 2022",
               image: "/calgen.gif"
           },
           {
@@ -362,14 +362,14 @@ export default function App() {
               year: "2021",
               desc: "Automatic Fish Feeder and Turbidity Device Censored System integrating sensors, automated microcontrollers, and live monitoring.",
               tags: ["IoT Hardware", "Microcontroller", "Turbidity Sensor", "Automation"],
-              badge: "🥉 Bronze Award - IIIC 2021",
+              badge: "🥉 Bronze Award • IIIC 2021",
               image: "/afif-tdcs.gif"
           }
       ],
       achievements: [
           { title: "FPMIPA Awards & HMF Appreciation 2021", role: "Awardee", date: "August - December 2021", desc: "Received awards for IoT projects that have been completed in international events" },
           { title: "International Invention and Innovative Competition 2021", role: "Bronze Award", date: "June 2021", desc: "Contributed as a Project Leader and Initiator of a project named \"AFIF - TDCS\" (Automatic Fish Feeder and Turbidity Device Censored System)" },
-          { title: "Lecturer and Laborant Assistant - Basic Physics Laboratory", role: "Lab Assistant", date: "July 2021", desc: "Assisted Lecturer and laborant preparing their asynchronous learning video for junior scholar" },
+          { title: "Lecturer and Laborant Assistant • Basic Physics Laboratory", role: "Lab Assistant", date: "July 2021", desc: "Assisted Lecturer and laborant preparing their asynchronous learning video for junior scholar" },
           { title: "Malaysia Invention and Inovation Expo 2022", role: "Silver Award", date: "April 2022", desc: "Contributed as a part Initiator and project scriptwriter of a project named \"CalGen\" (Customizable Calculating App Generator Platform)" },
           { title: "FPMIPA Awards & HMF Appreciation 2022", role: "Awardee", date: "January 2023", desc: "Received awards for Senior Innovator that have been completed in international events" },
           { title: "Sertifikasi Kompetensi Asisten Pengembang Web", role: "Certified Competent", date: "Juli 2026", desc: "Certified by Badan Nasional Sertifikasi Profesi (BNSP) & LSP BBPVP Bekasi on 6 core software development competency units." }
@@ -380,7 +380,7 @@ export default function App() {
           { title: "Quality Assurance Course | Binar Academy", date: "February - April 2023" },
           { title: "Google Data Analytics | Kemkominfo Digitalents Scholarship", date: "September - November 2022" },
           { title: "Artificial Intelligence Mastery Program | Orbit Future Academy", date: "August - December 2022" },
-          { title: "E-Governance Program | Microsoft x Pijar Foundation", date: "July - October 2022" }
+          { title: "E Governance Program | Microsoft x Pijar Foundation", date: "July - October 2022" }
       ]
       });
       setIsLoading(false);

@@ -68,7 +68,7 @@ def get_portfolio_data():
         "profile": {
             "name": "Mochamad Rois Nabhan",
             "title": "Digital Designer & Developer",
-            "description": "Specialized in Material Physics. Cultivating disciplined approach to research and focus on high-quality results. Cultivated a passion for data science and machine learning to bridge theoretical physics with data-driven industrial solutions.",
+            "description": "Specialized in Material Physics with a strong focus on high quality analytical outcomes. Cultivated a passion for data science and machine learning to bridge theoretical physics with data driven industrial solutions.",
             "email": "roisnabhan.01@gmail.com",
             "phone": "+62 81312930543",
             "location": "South Jakarta, DKI Jakarta",
@@ -93,7 +93,7 @@ def get_portfolio_data():
                     "Evaluated risk profiles to ensure all credit card approvals strictly aligned with internal compliance and target market policies.",
                     "Conducted end to end applicant data validation across multiple financial systems to prevent fraud.",
                     "Analyzed applicant incomes and existing banking assets to make data driven, responsible credit limit recommendations.",
-                    "Evaluation process for diverse card products, including Co-Branded, Regular, and Virtual Credit Cards (VCC)."
+                    "Evaluation process for diverse card products, including Co Branded, Regular, and Virtual Credit Cards (VCC)."
                 ]
             },
             {
@@ -102,8 +102,8 @@ def get_portfolio_data():
                 "role": "Consumer Risk Management (CRM) Data Analytics Internship",
                 "duration": "November 2025 - Mei 2026",
                 "highlights": [
-                    "Supported end-to-end development of Application, Behavior, and Collection scorecards.",
-                    "Finalized the technical review of the merged (NFI-FI) Credit Scorecard model.",
+                    "Supported end to end development of Application, Behavior, and Collection scorecards.",
+                    "Finalized technical review of the merged NFI and FI Credit Scorecard model.",
                     "Conducted advanced statistical analysis using IV, WoE, and PD calculations."
                 ]
             },
@@ -115,7 +115,7 @@ def get_portfolio_data():
                 "highlights": [
                     "Researched and developed activated carbon specifically targeting Methylene Blue dye removal.",
                     "Conducted advanced studies on adsorption isotherms and kinetics.",
-                    "Perform advanced analysis using Scanning Electron Microscopy and X-Ray Diffraction."
+                    "Perform advanced analysis using Scanning Electron Microscopy and X Ray Diffraction."
                 ]
             },
             {
@@ -134,7 +134,7 @@ def get_portfolio_data():
                 "title": "Credit Data System",
                 "category": "Data Analytics",
                 "year": "2026",
-                "desc": "Comprehensive credit record search, automated pre-approval calculation, and SLIK applicant validation platform for enterprise credit workflow.",
+                "desc": "Comprehensive credit record lookup, automated credit eligibility calculations, and SLIK applicant validation platform for enterprise lending workflows.",
                 "tags": ["React", "FastAPI", "SQL", "Risk Scoring", "SLIK"],
                 "badge": "Enterprise Platform",
                 "image": "/credit_lookup/img_1.jpg"
@@ -143,8 +143,8 @@ def get_portfolio_data():
                 "title": "Dhira Foundation Financial Apps",
                 "category": "Financial Operations",
                 "year": "2026",
-                "desc": "End-to-end financial operations and enterprise management platform engineered for Yayasan Dhira. Features real-time cashflow analytics (inflow/outflow tracking & 30-day dynamic trend charts), multi-tier expense approval workflows, automated doctor & staff honorarium invoicing, digital attendance logging, patient therapy tracking, and Cloudflare Turnstile-secured Role-Based Access Control (RBAC).",
-                "tags": ["Full-Stack Web", "Financial Analytics", "Cashflow ERP", "Approval Workflow", "Cloudflare Security"],
+                "desc": "Comprehensive financial operations and enterprise management platform built for Yayasan Dhira. Features live cashflow analytics tracking income and expense trends across 30 days, tiered approval workflows for operational spending, automated honorarium billing for doctors and staff, digital attendance logging, patient therapy monitoring, and role based access control protected by Cloudflare Turnstile.",
+                "tags": ["Full Stack Web", "Financial Analytics", "Cashflow ERP", "Approval Workflow", "Cloudflare Security"],
                 "badge": "Enterprise Platform",
                 "image": "/dhira/dashboard.png"
             },
@@ -179,7 +179,7 @@ def get_portfolio_data():
                 "title": "Activated Carbon Dye Removal",
                 "category": "Material Science",
                 "year": "2025",
-                "desc": "Research on adsorption isotherms and reaction kinetics for Methylene Blue dye removal using high-performance activated carbon.",
+                "desc": "Research on adsorption isotherms and reaction kinetics for Methylene Blue dye removal using high performance activated carbon.",
                 "tags": ["Material Physics", "Adsorption Kinetics", "SEM & XRD", "BRIN Research"],
                 "badge": "National Research",
                 "image": "/activated-carbon.gif"
@@ -190,7 +190,7 @@ def get_portfolio_data():
                 "year": "2022",
                 "desc": "Customizable Calculating App Generator Platform designed to assist students and researchers in mathematical computing.",
                 "tags": ["Software Dev", "Algorithm", "App Generator", "Python"],
-                "badge": "🥈 Silver Award - MIIX 2022",
+                "badge": "🥈 Silver Award • MIIX 2022",
                 "image": "/calgen.gif"
             },
             {
@@ -199,7 +199,7 @@ def get_portfolio_data():
                 "year": "2021",
                 "desc": "Automatic Fish Feeder and Turbidity Device Censored System integrating sensors, automated microcontrollers, and live monitoring.",
                 "tags": ["IoT Hardware", "Microcontroller", "Turbidity Sensor", "Automation"],
-                "badge": "🥉 Bronze Award - IIIC 2021",
+                "badge": "🥉 Bronze Award • IIIC 2021",
                 "image": "/afif-tdcs.gif"
             }
         ],
