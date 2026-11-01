@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { Menu, ArrowRight, ArrowUp, ExternalLink, X, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -35,10 +35,10 @@ const ModalGallery = ({ images, title, activeIndex = 0, onIndexChange }) => {
   const [localIndex, setLocalIndex] = useState(activeIndex);
   const currentIndex = activeIndex !== undefined ? activeIndex : localIndex;
 
-  const setIndex = (newIdx) => {
+  const setIndex = useCallback((newIdx) => {
     if (onIndexChange) onIndexChange(newIdx);
     setLocalIndex(newIdx);
-  };
+  }, [onIndexChange]);
 
   useEffect(() => {
     const handleKey = (e) => {
@@ -50,7 +50,7 @@ const ModalGallery = ({ images, title, activeIndex = 0, onIndexChange }) => {
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  }, [currentIndex, images.length]);
+  }, [currentIndex, images.length, setIndex]);
 
   if (!images || images.length === 0) return null;
 
@@ -145,8 +145,13 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [bnspTab, setBnspTab] = useState('front');
-  const [modalMedia, setModalMedia] = useState(null);
+  const [modalMedia, setModalMediaState] = useState(null);
   const [activeModalSlide, setActiveModalSlide] = useState(0);
+
+  const setModalMedia = useCallback((media) => {
+    setActiveModalSlide(0);
+    setModalMediaState(media);
+  }, []);
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -169,11 +174,7 @@ export default function App() {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
-  useEffect(() => {
-    setActiveModalSlide(0);
-  }, [modalMedia]);
+  }, [setModalMedia]);
 
   useEffect(() => {
     // We will fetch from FastAPI backend later
@@ -1323,7 +1324,7 @@ export default function App() {
                             const message = e.target.message.value;
                             
                             axios.post('/api/contact', { name, email, message })
-                                .then(res => {
+                                .then(() => {
                                     alert("Message sent successfully!");
                                     e.target.reset();
                                 })
