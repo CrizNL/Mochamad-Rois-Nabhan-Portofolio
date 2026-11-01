@@ -178,6 +178,27 @@ export default function App() {
               ]
           },
           {
+              title: "Dhira Foundation Financial Apps",
+              category: "Financial Operations",
+              year: "2026",
+              desc: "End-to-end financial operations and enterprise management platform engineered for Yayasan Dhira. Features real-time cashflow analytics (inflow/outflow tracking & 30-day dynamic trend charts), multi-tier expense approval workflows, automated doctor & staff honorarium invoicing, digital attendance logging, patient therapy tracking, and Cloudflare Turnstile-secured Role-Based Access Control (RBAC).\n\nKey Capabilities:\n✦ Financial Management & Cashflow: Dual-metric 30-day cashflow visualization, real-time balance calculations, audit-ready Buku Kas ledger, and automated financial report export.\n✦ Multi-Tier Expense Approval: Structured requisition pipeline across healthcare, operational, and facility budgets with status tracking (Menunggu, Disetujui, Ditolak).\n✦ Medical & Staff Invoicing: Comprehensive billing cycle management for specialist doctors, accountants, and foundation stakeholders with multi-stage payment tracking.\n✦ Operational HR & Healthcare: Daily staff attendance logs, non-medical logbook monitoring, and web-integrated patient consultation intake system.\n✦ Enterprise Security & Collaboration: Multi-role authentication (Admin, Staff, Inspector, Dokter, Stakeholder) protected by Cloudflare Turnstile, complemented by real-time internal team notes.",
+              tags: ["Full-Stack Web", "Financial Analytics", "Cashflow ERP", "Approval Workflow", "Cloudflare Security"],
+              badge: "Enterprise Platform",
+              image: "/dhira/dashboard.png",
+              sliderImages: [
+                  "/dhira/dashboard.png",
+                  "/dhira/aruskas.png",
+                  "/dhira/pengeluaran.png",
+                  "/dhira/invoice.png",
+                  "/dhira/login.png",
+                  "/dhira/konsultasi.png",
+                  "/dhira/kehadiran.png",
+                  "/dhira/aktivitas_pasien.png",
+                  "/dhira/logbook.png",
+                  "/dhira/kalender.png"
+              ]
+          },
+          {
               title: "NLP Voice Scoring (Sentinel)",
               category: "AI & Machine Learning",
               year: "2026",
@@ -269,8 +290,8 @@ export default function App() {
     if (total === 2) {
       return {
         span: 'col-span-12 md:col-span-6',
-        aspect: 'aspect-[16/10]',
-        isFeatured: false
+        aspect: 'aspect-[16/10] md:aspect-[16/9]',
+        isFeatured: true
       };
     }
     // 3 items: 1 wide spotlight (8 cols) + 2 compact cards (4 cols each)
@@ -297,18 +318,19 @@ export default function App() {
       };
     }
 
-    // Default 'All Projects' (7 items) - Full Responsive Bento Grid:
-    // Row 1: Item 0 (span 8) + Item 1 (span 4) = 12 cols
-    // Row 2: Item 2 (span 4) + Item 3 (span 4) + Item 4 (span 4) = 12 cols
-    // Row 3: Item 5 (span 6) + Item 6 (span 6) = 12 cols
+    // Default 'All Projects' (8 items) - Symmetrical & Responsive Bento Grid:
+    // Row 1 (Two Flagship Enterprise Systems): Item 0 (span 6) + Item 1 (span 6) = 12 cols
+    // Row 2 (Data Science & AI Suite): Item 2 (span 4) + Item 3 (span 4) + Item 4 (span 4) = 12 cols
+    // Row 3 (Engineering & Research): Item 5 (span 4) + Item 6 (span 4) + Item 7 (span 4) = 12 cols
     const bentoConfig = [
-      { span: 'col-span-12 lg:col-span-8', aspect: 'aspect-[16/10] md:aspect-[16/9]', isFeatured: true },
-      { span: 'col-span-12 sm:col-span-6 lg:col-span-4', aspect: 'aspect-[16/10] sm:aspect-[4/3] lg:aspect-[16/10]', isFeatured: false },
+      { span: 'col-span-12 lg:col-span-6', aspect: 'aspect-[16/10] md:aspect-[16/9]', isFeatured: true },
+      { span: 'col-span-12 lg:col-span-6', aspect: 'aspect-[16/10] md:aspect-[16/9]', isFeatured: true },
       { span: 'col-span-12 sm:col-span-6 lg:col-span-4', aspect: 'aspect-[16/10]', isFeatured: false },
       { span: 'col-span-12 sm:col-span-6 lg:col-span-4', aspect: 'aspect-[16/10]', isFeatured: false },
       { span: 'col-span-12 sm:col-span-6 lg:col-span-4', aspect: 'aspect-[16/10]', isFeatured: false },
-      { span: 'col-span-12 sm:col-span-6 lg:col-span-6', aspect: 'aspect-[16/10] lg:aspect-[16/9]', isFeatured: true },
-      { span: 'col-span-12 sm:col-span-6 lg:col-span-6', aspect: 'aspect-[16/10] lg:aspect-[16/9]', isFeatured: true },
+      { span: 'col-span-12 sm:col-span-6 lg:col-span-4', aspect: 'aspect-[16/10]', isFeatured: false },
+      { span: 'col-span-12 sm:col-span-6 lg:col-span-4', aspect: 'aspect-[16/10]', isFeatured: false },
+      { span: 'col-span-12 sm:col-span-6 lg:col-span-4', aspect: 'aspect-[16/10]', isFeatured: false },
     ];
 
     return bentoConfig[idx % bentoConfig.length] || { span: 'col-span-12 md:col-span-6', aspect: 'aspect-[16/10]', isFeatured: false };
@@ -1332,7 +1354,7 @@ export default function App() {
                 <div className="w-full flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-3 border-t border-white/10">
                   <div className="flex flex-col gap-2 max-w-2xl">
                     {modalMedia.desc && (
-                      <p className="text-[13px] md:text-[14px] text-on-surface-variant leading-relaxed">
+                      <p className="text-[13px] md:text-[14px] text-on-surface-variant leading-relaxed whitespace-pre-line">
                         {modalMedia.desc}
                       </p>
                     )}

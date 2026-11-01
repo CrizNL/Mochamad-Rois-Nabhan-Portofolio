@@ -129,6 +129,80 @@ def get_portfolio_data():
                 ]
             }
         ],
+        "projects": [
+            {
+                "title": "Credit Data System",
+                "category": "Data Analytics",
+                "year": "2026",
+                "desc": "Comprehensive credit record search, automated pre-approval calculation, and SLIK applicant validation platform for enterprise credit workflow.",
+                "tags": ["React", "FastAPI", "SQL", "Risk Scoring", "SLIK"],
+                "badge": "Enterprise Platform",
+                "image": "/credit_lookup/img_1.jpg"
+            },
+            {
+                "title": "Dhira Foundation Financial Apps",
+                "category": "Financial Operations",
+                "year": "2026",
+                "desc": "End-to-end financial operations and enterprise management platform engineered for Yayasan Dhira. Features real-time cashflow analytics (inflow/outflow tracking & 30-day dynamic trend charts), multi-tier expense approval workflows, automated doctor & staff honorarium invoicing, digital attendance logging, patient therapy tracking, and Cloudflare Turnstile-secured Role-Based Access Control (RBAC).",
+                "tags": ["Full-Stack Web", "Financial Analytics", "Cashflow ERP", "Approval Workflow", "Cloudflare Security"],
+                "badge": "Enterprise Platform",
+                "image": "/dhira/dashboard.png"
+            },
+            {
+                "title": "NLP Voice Scoring (Sentinel)",
+                "category": "AI & Machine Learning",
+                "year": "2026",
+                "desc": "Deep dive analysis and voice scoring dashboard with light glassmorphism UI for audio emotion & sentiment analysis.",
+                "tags": ["Python", "NLP", "Machine Learning", "FastText", "Speech Analytics"],
+                "badge": "AI Powered",
+                "image": "/nlp-voice-scoring.gif"
+            },
+            {
+                "title": "Merged Credit Scorecard Model",
+                "category": "Data Science",
+                "year": "2026",
+                "desc": "Technical review and advanced statistical analysis for risk prediction evaluating KS Statistic, PSI, and score banding.",
+                "tags": ["Python", "Risk Modeling", "KS Stat", "PSI", "WoE / IV"],
+                "badge": "Financial Modeling",
+                "image": "/merged-credit-scorecard.gif"
+            },
+            {
+                "title": "Scorecard Builder App",
+                "category": "Data Analytics",
+                "year": "2026",
+                "desc": "Interactive web application for credit scorecard management with dynamic risk grading and manual override capabilities.",
+                "tags": ["Web App", "Python", "Interactive Analytics", "Risk Decisioning"],
+                "badge": "Internal Tool",
+                "image": "/scorecard-builder.gif"
+            },
+            {
+                "title": "Activated Carbon Dye Removal",
+                "category": "Material Science",
+                "year": "2025",
+                "desc": "Research on adsorption isotherms and reaction kinetics for Methylene Blue dye removal using high-performance activated carbon.",
+                "tags": ["Material Physics", "Adsorption Kinetics", "SEM & XRD", "BRIN Research"],
+                "badge": "National Research",
+                "image": "/activated-carbon.gif"
+            },
+            {
+                "title": "CalGen",
+                "category": "Software",
+                "year": "2022",
+                "desc": "Customizable Calculating App Generator Platform designed to assist students and researchers in mathematical computing.",
+                "tags": ["Software Dev", "Algorithm", "App Generator", "Python"],
+                "badge": "🥈 Silver Award - MIIX 2022",
+                "image": "/calgen.gif"
+            },
+            {
+                "title": "AFIF - TDCS",
+                "category": "IoT",
+                "year": "2021",
+                "desc": "Automatic Fish Feeder and Turbidity Device Censored System integrating sensors, automated microcontrollers, and live monitoring.",
+                "tags": ["IoT Hardware", "Microcontroller", "Turbidity Sensor", "Automation"],
+                "badge": "🥉 Bronze Award - IIIC 2021",
+                "image": "/afif-tdcs.gif"
+            }
+        ],
         "achievements": [
             {
                 "title": "FPMIPA Awards & HMF Appreciation 2021",
