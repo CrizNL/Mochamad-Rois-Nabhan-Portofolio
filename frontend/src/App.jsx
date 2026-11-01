@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
-import { Menu, ArrowRight, ArrowUp, ExternalLink, X } from 'lucide-react';
+import { Menu, ArrowRight, ArrowUp, ExternalLink, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const ImageSlider = ({ images, interval = 3000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -31,6 +31,114 @@ const ImageSlider = ({ images, interval = 3000 }) => {
   );
 };
 
+const ModalGallery = ({ images, title, activeIndex = 0, onIndexChange }) => {
+  const [localIndex, setLocalIndex] = useState(activeIndex);
+  const currentIndex = activeIndex !== undefined ? activeIndex : localIndex;
+
+  const setIndex = (newIdx) => {
+    if (onIndexChange) onIndexChange(newIdx);
+    setLocalIndex(newIdx);
+  };
+
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === 'ArrowRight') {
+        setIndex((currentIndex + 1) % images.length);
+      } else if (e.key === 'ArrowLeft') {
+        setIndex((currentIndex - 1 + images.length) % images.length);
+      }
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [currentIndex, images.length]);
+
+  if (!images || images.length === 0) return null;
+
+  const currentImage = images[currentIndex];
+
+  return (
+    <div className="w-full flex flex-col gap-3">
+      {/* Viewport Frame with Guaranteed Responsive Dimensions */}
+      <div className="w-full relative aspect-[16/10] max-h-[58vh] min-h-[260px] sm:min-h-[360px] md:min-h-[460px] rounded-xl overflow-hidden bg-black/80 border border-white/10 flex items-center justify-center group/modalSlider">
+        {/* Ambient Blur Backdrop */}
+        <img 
+          src={currentImage} 
+          alt="" 
+          aria-hidden="true" 
+          className="absolute inset-0 w-full h-full object-cover blur-3xl opacity-20 scale-110 pointer-events-none" 
+        />
+
+        {/* Crisp Main Image (object-contain so all tables, charts & text are 100% visible) */}
+        <img 
+          key={currentIndex}
+          src={currentImage} 
+          alt={`${title} - Slide ${currentIndex + 1}`} 
+          className="relative z-10 max-h-full max-w-full object-contain p-2 rounded-lg shadow-2xl transition-all duration-300" 
+        />
+
+        {/* Interactive Controls (if multiple images) */}
+        {images.length > 1 && (
+          <>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIndex((currentIndex - 1 + images.length) % images.length);
+              }}
+              aria-label="Previous slide"
+              className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/70 hover:bg-black/95 border border-white/20 text-white flex items-center justify-center transition-all opacity-85 hover:opacity-100 hover:scale-110 cursor-pointer shadow-xl backdrop-blur-md"
+            >
+              <ChevronLeft className="w-5 h-5 text-white" />
+            </button>
+
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIndex((currentIndex + 1) % images.length);
+              }}
+              aria-label="Next slide"
+              className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/70 hover:bg-black/95 border border-white/20 text-white flex items-center justify-center transition-all opacity-85 hover:opacity-100 hover:scale-110 cursor-pointer shadow-xl backdrop-blur-md"
+            >
+              <ChevronRight className="w-5 h-5 text-white" />
+            </button>
+
+            {/* Slide Counter Badge */}
+            <div className="absolute bottom-3 right-3 z-20 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/10 text-white text-[11px] font-mono tracking-wider shadow-md flex items-center gap-1.5">
+              <span className="text-tertiary font-bold">{currentIndex + 1}</span>
+              <span className="text-zinc-500">/</span>
+              <span>{images.length}</span>
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* Interactive Thumbnail Strip */}
+      {images.length > 1 && (
+        <div className="w-full flex items-center gap-2 overflow-x-auto py-1 px-0.5 no-scrollbar">
+          {images.map((img, idx) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIndex(idx);
+              }}
+              className={`relative shrink-0 w-14 sm:w-16 aspect-[16/10] rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${
+                currentIndex === idx 
+                  ? 'border-tertiary shadow-[0_0_12px_rgba(60,221,199,0.5)] scale-105 opacity-100' 
+                  : 'border-white/10 opacity-40 hover:opacity-85'
+              }`}
+            >
+              <img src={img} alt={`Thumb ${idx + 1}`} className="w-full h-full object-cover" />
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 export default function App() {
   const [portfolioData, setPortfolioData] = useState(null);
   const [activeFilter, setActiveFilter] = useState('All Projects');
@@ -38,6 +146,7 @@ export default function App() {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [bnspTab, setBnspTab] = useState('front');
   const [modalMedia, setModalMedia] = useState(null);
+  const [activeModalSlide, setActiveModalSlide] = useState(0);
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -61,6 +170,10 @@ export default function App() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
+
+  useEffect(() => {
+    setActiveModalSlide(0);
+  }, [modalMedia]);
 
   useEffect(() => {
     // We will fetch from FastAPI backend later
@@ -1335,20 +1448,29 @@ export default function App() {
               </div>
 
               {/* Modal Media Body */}
-              <div className="p-4 md:p-6 overflow-y-auto flex flex-col gap-5 items-center bg-black/40">
-                <div className="w-full flex items-center justify-center rounded-xl overflow-hidden max-h-[60vh] bg-black/50 border border-white/5 relative">
-                  {modalMedia.sliderImages && modalMedia.sliderImages.length > 0 ? (
-                    <div className="w-full aspect-[16/10] max-h-[60vh]">
-                      <ImageSlider images={modalMedia.sliderImages} interval={3500} />
-                    </div>
-                  ) : (
+              <div className="p-4 md:p-6 overflow-y-auto flex flex-col gap-5 items-stretch bg-black/40">
+                {modalMedia.sliderImages && modalMedia.sliderImages.length > 0 ? (
+                  <ModalGallery 
+                    images={modalMedia.sliderImages} 
+                    title={modalMedia.title} 
+                    activeIndex={activeModalSlide}
+                    onIndexChange={setActiveModalSlide}
+                  />
+                ) : modalMedia.image ? (
+                  <div className="w-full relative aspect-[16/10] max-h-[58vh] min-h-[260px] sm:min-h-[360px] md:min-h-[460px] rounded-xl overflow-hidden bg-black/80 border border-white/10 flex items-center justify-center">
+                    <img 
+                      src={modalMedia.image} 
+                      alt="" 
+                      aria-hidden="true" 
+                      className="absolute inset-0 w-full h-full object-cover blur-3xl opacity-20 scale-110 pointer-events-none" 
+                    />
                     <img 
                       src={modalMedia.image} 
                       alt={modalMedia.title} 
-                      className="max-h-[60vh] w-auto max-w-full object-contain rounded-lg shadow-2xl" 
+                      className="relative z-10 max-h-full max-w-full object-contain p-2 rounded-lg shadow-2xl" 
                     />
-                  )}
-                </div>
+                  </div>
+                ) : null}
 
                 {/* Modal Description & Actions */}
                 <div className="w-full flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-3 border-t border-white/10">
@@ -1378,6 +1500,15 @@ export default function App() {
                         className="px-4 py-2 rounded-xl bg-gradient-to-r from-primary to-secondary text-background font-bold text-[13px] hover:shadow-[0_0_20px_rgba(45,156,219,0.5)] transition-all flex items-center gap-1.5"
                       >
                         Buka Dokumen PDF
+                      </a>
+                    ) : (modalMedia.sliderImages && modalMedia.sliderImages.length > 0) ? (
+                      <a 
+                        href={modalMedia.sliderImages[activeModalSlide] || modalMedia.sliderImages[0]} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 rounded-xl bg-surface-container hover:bg-surface-container-high border border-white/10 text-on-surface font-semibold text-[13px] transition-all flex items-center gap-1.5"
+                      >
+                        Buka Resolusi Penuh <ExternalLink className="w-3.5 h-3.5 text-tertiary" />
                       </a>
                     ) : modalMedia.image ? (
                       <a 
