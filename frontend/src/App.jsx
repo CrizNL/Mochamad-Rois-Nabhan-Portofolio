@@ -532,16 +532,6 @@ export default function App() {
           <span className="absolute top-6 right-6 font-mono text-tertiary/25 text-xs pointer-events-none select-none hidden md:block">+</span>
           <span className="absolute bottom-6 right-6 font-mono text-tertiary/25 text-xs pointer-events-none select-none hidden md:block">+</span>
 
-          {/* Kinetic Noir Top-Right Telemetry Decal */}
-          <div className="hidden xl:flex absolute top-6 right-10 flex-col items-end gap-0.5 font-mono text-[10px] text-zinc-500 tracking-wider pointer-events-none select-none z-20">
-            <div className="flex items-center gap-1.5 text-tertiary font-semibold">
-              <span className="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
-              <span>KINETIC_NOIR // SYS_ACTIVE</span>
-            </div>
-            <span>LAT -06° 12' 31" | LON +106° 50' 44"</span>
-            <span className="text-zinc-600">PHYSICS LAB // BANDUNG • JAKARTA</span>
-          </div>
-
           <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-8 relative z-10 items-center">
             <motion.div 
               initial={{ opacity: 0, y: 50 }}
@@ -549,19 +539,8 @@ export default function App() {
               transition={{ duration: 0.8 }}
               className="col-span-1 md:col-span-8 md:pr-12 relative z-20"
             >
-              <div className="flex flex-wrap items-center gap-3 mb-6">
-                <div className="inline-block px-4 py-1 rounded-full bg-surface-container-high border border-outline-variant shadow-sm">
-                  <span className="font-label-caps text-[12px] sm:text-[14px] text-tertiary tracking-widest uppercase">{portfolioData.profile.title}</span>
-                </div>
-                <div className="hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-low/90 border border-tertiary/25 backdrop-blur-md font-mono text-[11px] text-tertiary shadow-[0_0_15px_rgba(60,221,199,0.1)]">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
-                  </span>
-                  <span className="tracking-wider uppercase font-semibold">STREAM // ONLINE</span>
-                  <span className="text-zinc-600">|</span>
-                  <span className="text-zinc-400 font-normal">KINETIC NOIR V2.6</span>
-                </div>
+              <div className="inline-block px-4 py-1 mb-6 rounded-full bg-surface-container-high border border-outline-variant shadow-sm">
+                <span className="font-label-caps text-[12px] sm:text-[14px] text-tertiary tracking-widest uppercase">{portfolioData.profile.title}</span>
               </div>
               <h1 className="font-display-xl text-[36px] sm:text-[54px] md:text-[80px] font-extrabold text-on-surface leading-[1.1] mb-6 sm:mb-8">
                 HI, I'M <br/>
