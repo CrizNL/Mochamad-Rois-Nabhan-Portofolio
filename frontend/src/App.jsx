@@ -506,21 +506,40 @@ export default function App() {
 
       <main className="pt-[80px] sm:pt-[100px]">
         {/* Hero Section */}
-        <section id="home" className="min-h-screen flex items-center relative px-4 sm:px-6 md:px-8 mt-8 sm:mt-16 mb-12 overflow-hidden">
-          {/* Ambient Kinetic Matrix Rain Ornament (Subtle, Cyan Neon, Proportional Vignette) */}
-          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-20 sm:opacity-30 [mask-image:radial-gradient(ellipse_85%_70%_at_50%_35%,black_35%,transparent_90%)]">
+        <section id="home" className="min-h-screen flex items-center relative px-4 sm:px-6 md:px-8 mt-8 sm:mt-16 mb-8 overflow-hidden">
+          {/* Kinetic Noir Cyber Grid */}
+          <div className="absolute inset-0 cyber-grid opacity-35 pointer-events-none z-0"></div>
+
+          {/* Ambient Kinetic Matrix Rain Ornament (Right-biased Proportional Cyber Vignette) */}
+          <div className="absolute right-0 top-0 bottom-0 w-full md:w-[58%] z-0 overflow-hidden pointer-events-none opacity-25 md:opacity-35 [mask-image:radial-gradient(ellipse_75%_65%_at_70%_45%,black_35%,transparent_85%)]">
             <MatrixRain
               color="#3cddc7"
-              highlight="#d5faf5"
+              highlight="#e0fbf8"
               background="#090a10"
-              density={0.55}
-              fontSize={18}
-              glow={3}
-              speed={0.65}
-              trail={0.92}
+              density={0.5}
+              fontSize={16}
+              glow={2.5}
+              speed={0.6}
+              trail={0.93}
               pointerResponse={false}
               className="w-full h-full"
             />
+          </div>
+
+          {/* Tech Corner Crosshairs */}
+          <span className="absolute top-6 left-6 font-mono text-tertiary/25 text-xs pointer-events-none select-none hidden md:block">+</span>
+          <span className="absolute bottom-6 left-6 font-mono text-tertiary/25 text-xs pointer-events-none select-none hidden md:block">+</span>
+          <span className="absolute top-6 right-6 font-mono text-tertiary/25 text-xs pointer-events-none select-none hidden md:block">+</span>
+          <span className="absolute bottom-6 right-6 font-mono text-tertiary/25 text-xs pointer-events-none select-none hidden md:block">+</span>
+
+          {/* Kinetic Noir Top-Right Telemetry Decal */}
+          <div className="hidden xl:flex absolute top-6 right-10 flex-col items-end gap-0.5 font-mono text-[10px] text-zinc-500 tracking-wider pointer-events-none select-none z-20">
+            <div className="flex items-center gap-1.5 text-tertiary font-semibold">
+              <span className="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+              <span>KINETIC_NOIR // SYS_ACTIVE</span>
+            </div>
+            <span>LAT -06° 12' 31" | LON +106° 50' 44"</span>
+            <span className="text-zinc-600">PHYSICS LAB // BANDUNG • JAKARTA</span>
           </div>
 
           <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-8 relative z-10 items-center">
@@ -530,8 +549,19 @@ export default function App() {
               transition={{ duration: 0.8 }}
               className="col-span-1 md:col-span-8 md:pr-12 relative z-20"
             >
-              <div className="inline-block px-4 py-1 mb-6 rounded-full bg-surface-container-high border border-outline-variant">
-                <span className="font-label-caps text-[12px] sm:text-[14px] text-tertiary tracking-widest uppercase">{portfolioData.profile.title}</span>
+              <div className="flex flex-wrap items-center gap-3 mb-6">
+                <div className="inline-block px-4 py-1 rounded-full bg-surface-container-high border border-outline-variant shadow-sm">
+                  <span className="font-label-caps text-[12px] sm:text-[14px] text-tertiary tracking-widest uppercase">{portfolioData.profile.title}</span>
+                </div>
+                <div className="hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-low/90 border border-tertiary/25 backdrop-blur-md font-mono text-[11px] text-tertiary shadow-[0_0_15px_rgba(60,221,199,0.1)]">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
+                  </span>
+                  <span className="tracking-wider uppercase font-semibold">STREAM // ONLINE</span>
+                  <span className="text-zinc-600">|</span>
+                  <span className="text-zinc-400 font-normal">KINETIC NOIR V2.6</span>
+                </div>
               </div>
               <h1 className="font-display-xl text-[36px] sm:text-[54px] md:text-[80px] font-extrabold text-on-surface leading-[1.1] mb-6 sm:mb-8">
                 HI, I'M <br/>
@@ -553,9 +583,20 @@ export default function App() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="col-span-1 md:col-span-4 relative mt-8 md:mt-0 z-10 md:-ml-12"
+              className="col-span-1 md:col-span-4 relative mt-8 md:mt-0 z-10 md:-ml-12 group"
             >
+              {/* Ambient Backing Glow Aura */}
+              <div className="absolute -inset-2 rounded-[28px] bg-gradient-to-r from-secondary/30 via-tertiary/25 to-primary/25 blur-xl opacity-40 group-hover:opacity-70 transition-opacity duration-700 pointer-events-none -z-10"></div>
+
               <div className="relative w-full aspect-[3/4] rounded-[24px] overflow-hidden glass-panel bg-surface-container-highest flex items-center justify-center dynamic-neon-frame">
+                {/* Cyber HUD Corner Brackets */}
+                <span className="absolute top-2.5 left-3 font-mono text-[10px] text-tertiary/80 z-30 select-none pointer-events-none tracking-wider font-semibold">┌ ID: 2026.RN</span>
+                <span className="absolute top-2.5 right-3 font-mono text-[10px] text-tertiary/80 z-30 select-none pointer-events-none tracking-wider font-semibold">[SYS: LIVE] ┐</span>
+                <span className="absolute bottom-2.5 right-3 font-mono text-[10px] text-tertiary/80 z-30 select-none pointer-events-none tracking-wider font-semibold">COORD: 6.2°S ┘</span>
+
+                {/* Animated Holographic Scanline */}
+                <div className="animate-cyber-scan"></div>
+
                 <img src="/nabhan-batik.png" alt="Hero Portrait" className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300" />
               </div>
               <div className="absolute -bottom-4 -left-2 sm:-bottom-8 sm:-left-8 glass-panel p-4 sm:p-6 rounded-[16px] backdrop-blur-xl border border-white/10 shadow-2xl z-30">
@@ -565,6 +606,17 @@ export default function App() {
             </motion.div>
           </div>
         </section>
+
+        {/* Kinetic Noir Section Divider */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-4 flex items-center justify-between pointer-events-none select-none z-10">
+          <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent via-tertiary/30 to-transparent"></div>
+          <div className="px-4 flex items-center gap-2.5 font-mono text-[10px] sm:text-[11px] text-tertiary tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rotate-45 bg-tertiary/80 shadow-[0_0_8px_#3cddc7]"></span>
+            <span>SEC_01 // SELECTED WORKS</span>
+            <span className="w-1.5 h-1.5 rotate-45 bg-tertiary/80 shadow-[0_0_8px_#3cddc7]"></span>
+          </div>
+          <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent via-tertiary/30 to-transparent"></div>
+        </div>
 
         {/* Portfolio Gallery Section */}
         <section id="portfolio" className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 pt-20 md:pt-32 pb-16">
