@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { Menu, ArrowRight, ArrowUp, ExternalLink, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MatrixRain } from '@/components/ui/matrix-rain';
 
 const ImageSlider = ({ images, interval = 3000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -505,7 +506,23 @@ export default function App() {
 
       <main className="pt-[80px] sm:pt-[100px]">
         {/* Hero Section */}
-        <section id="home" className="min-h-screen flex items-center relative px-4 sm:px-6 md:px-8 mt-8 sm:mt-16 mb-12">
+        <section id="home" className="min-h-screen flex items-center relative px-4 sm:px-6 md:px-8 mt-8 sm:mt-16 mb-12 overflow-hidden">
+          {/* Ambient Kinetic Matrix Rain Ornament (Subtle, Cyan Neon, Proportional Vignette) */}
+          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-20 sm:opacity-30 [mask-image:radial-gradient(ellipse_85%_70%_at_50%_35%,black_35%,transparent_90%)]">
+            <MatrixRain
+              color="#3cddc7"
+              highlight="#d5faf5"
+              background="#090a10"
+              density={0.55}
+              fontSize={18}
+              glow={3}
+              speed={0.65}
+              trail={0.92}
+              pointerResponse={false}
+              className="w-full h-full"
+            />
+          </div>
+
           <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-8 relative z-10 items-center">
             <motion.div 
               initial={{ opacity: 0, y: 50 }}
