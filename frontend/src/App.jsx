@@ -598,8 +598,24 @@ export default function App() {
         </div>
 
         {/* Portfolio Gallery Section */}
-        <section id="portfolio" className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 pt-20 md:pt-32 pb-16">
-          <header className="mb-12">
+        <section id="portfolio" className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 pt-20 md:pt-32 pb-16 overflow-hidden">
+          {/* Subtle Ambient Matrix Stream (Left-biased Cyber Vignette) */}
+          <div className="absolute left-0 top-0 bottom-0 w-full md:w-[45%] z-0 overflow-hidden pointer-events-none opacity-15 md:opacity-20 [mask-image:radial-gradient(ellipse_75%_65%_at_25%_45%,black_30%,transparent_85%)]">
+            <MatrixRain
+              color="#3cddc7"
+              highlight="#e0fbf8"
+              background="#090a10"
+              density={0.45}
+              fontSize={15}
+              glow={2}
+              speed={0.55}
+              trail={0.93}
+              pointerResponse={false}
+              className="w-full h-full"
+            />
+          </div>
+
+          <header className="mb-12 relative z-10">
               <h1 className="font-display-xl text-[34px] sm:text-[48px] md:text-[60px] text-primary mb-2 font-bold uppercase leading-tight">Selected Works</h1>
               <p className="font-body-lg text-[15px] sm:text-[18px] text-on-surface-variant max-w-2xl">Exploring the intersection of physics and data science. A collection of experimental research and data models.</p>
           </header>
@@ -703,6 +719,17 @@ export default function App() {
               })}
           </div>
         </section>
+
+        {/* Kinetic Noir Section Divider 2 */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-4 flex items-center justify-between pointer-events-none select-none z-10">
+          <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent via-tertiary/30 to-transparent"></div>
+          <div className="px-4 flex items-center gap-2.5 font-mono text-[10px] sm:text-[11px] text-tertiary tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rotate-45 bg-tertiary/80 shadow-[0_0_8px_#3cddc7]"></span>
+            <span>SEC_02 // EXPERIENCE & EDUCATION</span>
+            <span className="w-1.5 h-1.5 rotate-45 bg-tertiary/80 shadow-[0_0_8px_#3cddc7]"></span>
+          </div>
+          <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent via-tertiary/30 to-transparent"></div>
+        </div>
 
         {/* Experience Section */}
         <section id="experience" className="pt-16 pb-16 max-w-7xl mx-auto px-4 sm:px-6 md:px-8 relative">
@@ -942,6 +969,9 @@ export default function App() {
                     {/* Left: Certificate Preview Frame */}
                     <div className="w-full lg:w-5/12 flex flex-col gap-3 shrink-0">
                         <div className={`w-full ${bnspTab === 'all' ? 'aspect-[1.414/1]' : 'aspect-[1/1.3] sm:aspect-[1/1.414]'} rounded-xl overflow-hidden bg-black/40 relative flex items-center justify-center p-2.5 border border-white/5 transition-all`}>
+                            {/* Holographic Cyber Scanline */}
+                            <div className="animate-cyber-scan opacity-30 pointer-events-none"></div>
+
                             {/* Ambient background blur */}
                             <img 
                                 src={bnspTab === 'back' ? '/bnsp-certificate-page2.png' : bnspTab === 'all' ? '/bnsp-certificate-combined.png' : '/bnsp-certificate-page1.png'} 
@@ -1068,7 +1098,9 @@ export default function App() {
 
             <div className="relative grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
                 {/* Timeline Center Line (Desktop) / Left Line (Mobile) */}
-                <div className="absolute left-[15px] md:left-1/2 top-0 bottom-0 w-[2px] timeline-line md:-translate-x-1/2 z-0"></div>
+                <div className="absolute left-[15px] md:left-1/2 top-0 bottom-0 w-[2px] timeline-line md:-translate-x-1/2 z-0">
+                    <div className="timeline-photon left-1/2"></div>
+                </div>
                 
                 {portfolioData.experience.map((exp, idx) => {
                     const isEven = idx % 2 === 0;
@@ -1206,9 +1238,36 @@ export default function App() {
             </div>
         </section>
 
+        {/* Kinetic Noir Section Divider 3 */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-4 flex items-center justify-between pointer-events-none select-none z-10">
+          <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent via-secondary/30 to-transparent"></div>
+          <div className="px-4 flex items-center gap-2.5 font-mono text-[10px] sm:text-[11px] text-secondary tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rotate-45 bg-secondary/80 shadow-[0_0_8px_#c0c1ff]"></span>
+            <span>SEC_03 // ACHIEVEMENTS &amp; DEVELOPMENT</span>
+            <span className="w-1.5 h-1.5 rotate-45 bg-secondary/80 shadow-[0_0_8px_#c0c1ff]"></span>
+          </div>
+          <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent via-secondary/30 to-transparent"></div>
+        </div>
+
         {/* Self Development & Achievements Section */}
-        <section id="achievements" className="pt-16 pb-16 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto relative z-10">
-            <header className="mb-14 md:mb-20">
+        <section id="achievements" className="pt-16 pb-16 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto relative z-10 overflow-hidden">
+            {/* Subtle Ambient Matrix Stream (Right-biased Lavender Vignette) */}
+            <div className="absolute right-0 top-0 bottom-0 w-full md:w-[45%] z-0 overflow-hidden pointer-events-none opacity-15 md:opacity-20 [mask-image:radial-gradient(ellipse_75%_65%_at_75%_45%,black_30%,transparent_85%)]">
+              <MatrixRain
+                color="#c0c1ff"
+                highlight="#ffffff"
+                background="#090a10"
+                density={0.45}
+                fontSize={15}
+                glow={2}
+                speed={0.55}
+                trail={0.93}
+                pointerResponse={false}
+                className="w-full h-full"
+              />
+            </div>
+
+            <header className="mb-14 md:mb-20 relative z-10">
                 <h1 className="font-display-xl text-[32px] sm:text-[44px] md:text-[60px] font-bold text-on-surface mb-6 md:mb-8 max-w-4xl uppercase leading-tight">
                     Self Development &amp; <span className="text-tertiary italic">Achievements</span>
                 </h1>
@@ -1326,8 +1385,35 @@ export default function App() {
             </div>
         </section>
 
+        {/* Kinetic Noir Section Divider 4 */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-4 flex items-center justify-between pointer-events-none select-none z-10">
+          <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent via-tertiary/30 to-transparent"></div>
+          <div className="px-4 flex items-center gap-2.5 font-mono text-[10px] sm:text-[11px] text-tertiary tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rotate-45 bg-tertiary/80 shadow-[0_0_8px_#3cddc7]"></span>
+            <span>SEC_04 // SECURE DIRECT CHANNEL</span>
+            <span className="w-1.5 h-1.5 rotate-45 bg-tertiary/80 shadow-[0_0_8px_#3cddc7]"></span>
+          </div>
+          <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent via-tertiary/30 to-transparent"></div>
+        </div>
+
         {/* Contact Section */}
-        <section id="contact" className="pt-20 md:pt-32 pb-24 md:pb-32 px-4 sm:px-6 md:px-8 relative z-10 w-full max-w-7xl mx-auto">
+        <section id="contact" className="pt-20 md:pt-32 pb-24 md:pb-32 px-4 sm:px-6 md:px-8 relative z-10 w-full max-w-7xl mx-auto overflow-hidden">
+            {/* Ambient Matrix Rain Backdrop (Behind Form) */}
+            <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[50%] z-0 overflow-hidden pointer-events-none opacity-15 lg:opacity-20 [mask-image:radial-gradient(ellipse_75%_65%_at_70%_50%,black_30%,transparent_85%)]">
+              <MatrixRain
+                color="#3cddc7"
+                highlight="#e0fbf8"
+                background="#090a10"
+                density={0.45}
+                fontSize={15}
+                glow={2}
+                speed={0.55}
+                trail={0.93}
+                pointerResponse={false}
+                className="w-full h-full"
+              />
+            </div>
+
             {/* Deep Background Blur for Contact */}
             <div className="fixed inset-0 pointer-events-none z-0 hidden lg:block">
                 <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#07006c] rounded-full mix-blend-screen filter blur-[120px] opacity-20"></div>
@@ -1356,7 +1442,10 @@ export default function App() {
                         </div>
                         <div className="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent opacity-80 z-10 pointer-events-none"></div>
                         <div className="relative z-20 flex items-center gap-3 pointer-events-none">
-                            <span className="text-tertiary text-xl">📍</span>
+                            <div className="relative flex items-center justify-center w-5 h-5 shrink-0">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-tertiary shadow-[0_0_8px_#3cddc7]"></span>
+                            </div>
                             <span className="font-body-md text-[15px] sm:text-[16px] text-on-surface font-semibold">{portfolioData.profile.location}</span>
                         </div>
                     </a>
