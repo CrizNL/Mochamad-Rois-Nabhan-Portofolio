@@ -468,8 +468,8 @@ export default function App() {
               <div className="absolute inset-4 rounded-full border-l-4 border-primary animate-spin opacity-50" style={{ animationDuration: '3s' }}></div>
               <span className="text-on-surface font-display-xl font-bold text-3xl tracking-tighter">RN</span>
             </div>
-            <div className="font-label-caps text-tertiary tracking-[0.4em] text-[12px] animate-pulse">
-              INITIALIZING KINETIC NOIR...
+            <div className="font-label-caps text-tertiary tracking-[0.35em] sm:tracking-[0.4em] text-[12px] sm:text-[13px] animate-pulse uppercase">
+              MOCHAMAD ROIS NABHAN
             </div>
           </motion.div>
         )}
