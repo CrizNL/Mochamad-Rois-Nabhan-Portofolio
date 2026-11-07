@@ -1523,7 +1523,7 @@ export default function App() {
               WhatsApp
             </a>
           </div>
-          <span className="font-label-caps text-[12px] font-bold tracking-[0.2em] uppercase text-indigo-500">© 2026 MOCHAMAD ROIS NABHAN. BUILT FOR THE FUTURE.</span>
+          <span className="font-label-caps text-[12px] font-bold tracking-[0.2em] uppercase text-indigo-500">© 2026 MOCHAMAD ROIS NABHAN</span>
         </div>
       </footer>
       <AnimatePresence>
